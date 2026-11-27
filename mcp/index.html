@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="it" data-page-feature="mcp">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../assets/config.js"></script>
+<title>Connettori MCP per CedHouse Suite e Gestendo · Assistente H24</title>
+<meta name="description" content="Connettori MCP in arrivo per CedHouse Suite e Gestendo: colleghi Claude o un altro assistente AI compatibile al gestionale che usi, con le tue credenziali, e gli chiedi rate, documenti e interventi a parole.">
+<link rel="canonical" href="https://assistenteh24.com/mcp/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://assistenteh24.com/mcp/">
+<meta property="og:title" content="Connettori MCP per CedHouse Suite e Gestendo · Assistente H24">
+<meta property="og:description" content="Il tuo gestionale, dentro il tuo assistente AI. In arrivo.">
+<meta name="theme-color" content="#0d1321">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d1321'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%23ffb547' stroke-width='7' stroke-linecap='round' stroke-dasharray='70 200' transform='rotate(-90 32 32)'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%2337d6b5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shared.css">
+<style>
+:root{
+  --ink:#0d1321; --ink-2:#151d30; --ink-3:#1e2840; --line:#2a3552;
+  --paper:#f7f4ee; --paper-2:#efe9de; --text:#1b2233; --muted:#5d6578;
+  --on-ink:#e9ecf4; --on-ink-muted:#9aa3ba;
+  --amber:#ffb547; --coral:#ff7a59; --teal:#37d6b5; --violet:#8b7bff;
+  --radius:18px; --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--paper);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;line-height:1.08;letter-spacing:-.02em}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
+.eyebrow{font:600 12px/1 Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
+code,.mono{font-family:"JetBrains Mono",monospace}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,backdrop-filter .3s}
+nav.scrolled{background:rgba(13,19,33,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:700 20px Fraunces,serif;white-space:nowrap}
+.logo svg{width:32px;height:32px;flex:none}
+.logo span{display:flex;flex-direction:column;line-height:1.05}
+.logo small{font:600 10px/1 Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-top:3px}
+.navlinks{display:flex;gap:28px;align-items:center}
+.navlinks > a{color:var(--on-ink-muted);text-decoration:none;font-size:14px;font-weight:500}
+.navlinks > a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;border-radius:999px;font:600 15px Inter;padding:13px 22px;text-decoration:none;transition:transform .15s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--amber);color:var(--ink);box-shadow:0 8px 30px -8px rgba(255,181,71,.6)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.16)}
+.navlinks .btn{padding:9px 16px;font-size:14px;color:var(--ink)}
+@media (max-width:820px){.navlinks > a:not(.btn){display:none}.navlinks{gap:16px}}
+@media (max-width:420px){.logo{font-size:17px}.navlinks .btn{padding:8px 12px;font-size:13px}}
+
+/* HERO */
+.hero{background:var(--ink);color:var(--on-ink);position:relative;overflow:hidden;padding:140px 0 100px}
+.aurora{position:absolute;inset:-20% -10% auto -10%;height:120%;pointer-events:none;filter:blur(70px);opacity:.5}
+.aurora span{position:absolute;border-radius:50%;animation:float 18s ease-in-out infinite}
+.aurora span:nth-child(1){width:520px;height:520px;background:#8b7bff55;left:-6%;top:6%}
+.aurora span:nth-child(2){width:460px;height:460px;background:#37d6b555;right:4%;top:-4%;animation-delay:-6s}
+.aurora span:nth-child(3){width:380px;height:380px;background:#ff7a5955;left:40%;top:40%;animation-delay:-12s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.08)}}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+@media (max-width:960px){.hero .wrap{grid-template-columns:1fr}.hero{padding:116px 0 76px}}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);font-size:13px;color:var(--on-ink)}
+.pill b{background:var(--amber);color:var(--ink);border-radius:999px;padding:2px 8px;font-size:11px;letter-spacing:.05em}
+.hero h1{font-size:clamp(40px,5.8vw,70px);margin:22px 0 22px;color:#fff}
+.hero h1 em{font-style:italic;background:linear-gradient(100deg,var(--teal),var(--violet) 70%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.hero p.lead{font-size:clamp(17px,2vw,19.5px);color:var(--on-ink-muted);max-width:570px}
+.hero .ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.hero .for{margin-top:28px;font-size:14px;color:var(--on-ink-muted)}
+.hero .for a{color:#fff}
+
+/* Finestra client */
+.client{background:#151d30;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 50px 100px -40px rgba(0,0,0,.8)}
+.client .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);font:500 12px "JetBrains Mono",monospace;color:var(--on-ink-muted)}
+.client .bar i{width:10px;height:10px;border-radius:50%;background:#2a3552}
+.client .bar span{margin-left:8px}
+.client .body{padding:20px;display:flex;flex-direction:column;gap:12px;min-height:430px}
+.u{align-self:flex-end;background:var(--ink-3);color:#fff;padding:10px 14px;border-radius:14px 14px 4px 14px;font-size:14px;max-width:85%}
+.call{align-self:flex-start;display:flex;align-items:center;gap:8px;font:500 12px "JetBrains Mono",monospace;padding:7px 11px;border-radius:10px;border:1px solid}
+.call.ch{color:#b0a6ff;border-color:#8b7bff55;background:#8b7bff14}
+.call.gs{color:#5fe3c7;border-color:#37d6b555;background:#37d6b514}
+.call small{color:var(--on-ink-muted)}
+.a{color:var(--on-ink);font-size:14px;line-height:1.5}
+.a b{color:#fff}
+.a ul{list-style:none;margin-top:6px;display:flex;flex-direction:column;gap:4px}
+.a li::before{content:"• ";color:var(--amber)}
+.client .step{animation:pop .4s ease-out both}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+section{padding:110px 0}
+@media (max-width:700px){section{padding:76px 0}}
+.sec-head{max-width:740px;margin-bottom:52px}
+.sec-head h2{font-size:clamp(32px,4.4vw,52px);margin:14px 0 16px}
+.sec-head p{font-size:18px;color:var(--muted)}
+
+/* Cos'è MCP */
+.what{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.what{grid-template-columns:1fr}}
+.what div{background:#fff;border:1px solid #e6dfd1;border-radius:var(--radius);padding:28px}
+.what .ic{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;font-size:22px;margin-bottom:16px}
+.what h3{font-size:22px;margin-bottom:8px}
+.what p{color:var(--muted);font-size:15px}
+
+/* Prodotti MCP */
+.mcp-prod{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start;padding:44px;border-radius:28px;background:#fff;border:1px solid #e6dfd1;scroll-margin-top:90px}
+.mcp-prod + .mcp-prod{margin-top:28px}
+@media (max-width:900px){.mcp-prod{grid-template-columns:1fr;padding:28px 22px;gap:26px}}
+.mcp-prod .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.mcp-prod .tags span{font:600 11px/1 Inter;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:var(--paper-2);color:var(--muted)}
+.mcp-prod .tags .soon{background:#fff1dc;color:#b86e00}
+.mcp-prod h3{font-size:clamp(30px,3.6vw,42px);margin-bottom:6px}
+.mcp-prod h3 small{display:block;font:600 12px Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:10px}
+.mcp-prod .sub{font-size:17px;color:var(--muted);margin:10px 0 18px}
+.mcp-prod .site{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14px;color:var(--text);text-decoration:none;border-bottom:1.5px solid var(--amber);padding-bottom:2px}
+.asks{margin-top:24px;display:flex;flex-direction:column;gap:8px}
+.asks span{font-size:14px;font-style:italic;background:var(--paper);border-radius:12px;padding:9px 13px;align-self:flex-start}
+.feats h4{font:600 12px/1 Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.feats ul{list-style:none;display:flex;flex-direction:column;border-top:1px solid #ece6da}
+.feats li{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:13px 0;border-bottom:1px solid #ece6da;font-size:15px}
+.feats li b{display:block;font-size:15px}
+.feats li small{color:var(--muted);font-size:13.5px}
+.feats li .t{font-size:17px;line-height:1.3}
+.feats .opt{margin-top:16px;font-size:13.5px;color:var(--muted);background:var(--paper);border-radius:12px;padding:12px 14px}
+.feats .opt b{color:var(--text)}
+
+/* Comune */
+.common{background:var(--ink);color:var(--on-ink)}
+.common h2{color:#fff}
+.common .sec-head p{color:var(--on-ink-muted)}
+.c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+@media (max-width:900px){.c-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.c-grid{grid-template-columns:1fr}}
+.c-grid div{background:var(--ink);padding:28px}
+.c-grid b{display:block;color:#fff;font-size:17px;margin:12px 0 6px}
+.c-grid p{color:var(--on-ink-muted);font-size:14.5px}
+
+/* Contatti */
+.cta{background:var(--paper-2);position:relative}
+.cta .sec-head{text-align:center;margin:0 auto 40px}
+.cta h2 em{font-style:italic;color:var(--coral)}
+.cta .form-card{box-shadow:0 30px 70px -40px rgba(13,19,33,.45);border:1px solid #e6dfd1}
+footer{background:#080c16;color:var(--on-ink-muted);padding:34px 0;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:var(--on-ink);text-decoration:none}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="./" class="logo" aria-label="Connettori MCP di Assistente H24">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1e2840"/><circle cx="32" cy="32" r="15" fill="none" stroke="#ffb547" stroke-width="7" stroke-linecap="round" stroke-dasharray="70 200" transform="rotate(-90 32 32)"/><circle cx="32" cy="32" r="5" fill="#37d6b5"/></svg>
+      <span>Assistente H24<small>Connettori MCP</small></span>
+    </a>
+    <div class="navlinks">
+      <a href="#cedhouse">CedHouse Suite</a>
+      <a href="#gestendo">Gestendo</a>
+      <div class="dd">
+        <button class="dd-btn" aria-expanded="false" aria-controls="dd-prodotti">Prodotti <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <div class="dd-panel" id="dd-prodotti">
+          <div class="dd-title">Prodotti</div>
+          <a class="dd-item" href="../condomini/"><span class="di">🏢</span><span><b>Condomini <span class="tag">Disponibile</span></b><small>Risponde ai condòmini H24 e apre gli interventi di manutenzione</small></span></a>
+          <div class="dd-item soon"><span class="di">📁</span><span><b>Studi professionali <span class="tag">In arrivo</span></b><small>Scadenze, documenti e domande dei clienti</small></span></div>
+          <div class="dd-item soon"><span class="di">🛠️</span><span><b>Assistenza tecnica <span class="tag">In arrivo</span></b><small>Richieste, interventi e ricambi</small></span></div>
+          <div data-feature="mcp">
+            <div class="dd-title dd-sep">Connettori MCP</div>
+            <a class="dd-item" href="#cedhouse"><span class="di">🔌</span><span><b>MCP per CedHouse Suite <span class="tag soon">In arrivo</span></b><small>Rate, documenti e regolamento nel tuo assistente AI</small></span></a>
+            <a class="dd-item" href="#gestendo"><span class="di">🔧</span><span><b>MCP per Gestendo <span class="tag soon">In arrivo</span></b><small>Apri e segui gli interventi di manutenzione a parole</small></span></a>
+          </div>
+          <a class="dd-item" href="../"><span class="di">✦</span><span><b>La piattaforma Assistente H24</b><small>Agenti AI che imparano come lavori, per ogni settore</small></span></a>
+        </div>
+      </div>
+      <a href="#contatti" class="btn btn-primary">Avvisami</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <span class="pill"><b>IN ARRIVO</b> Connettori MCP per i gestionali dei condomini</span>
+      <h1>Il tuo gestionale, <em>dentro il tuo assistente AI.</em></h1>
+      <p class="lead">Colleghi Claude, o un altro assistente compatibile con MCP, al software che usi ogni giorno. Entri con le tue credenziali di sempre e chiedi le cose a parole: rate, verbali, interventi. Niente più dieci clic per trovare un PDF.</p>
+      <div class="ctas">
+        <a href="#contatti" class="btn btn-primary">Avvisami quando esce →</a>
+        <a href="#cos-e" class="btn btn-ghost">Cos'è MCP?</a>
+      </div>
+      <p class="for">Per <a href="https://www.cedhousesuite.com/" target="_blank" rel="noopener">CedHouse Suite</a> e <a href="https://www.gestendo.it/" target="_blank" rel="noopener">Gestendo</a>.</p>
+    </div>
+    <div class="client" aria-label="Esempio: un assistente AI che usa i connettori">
+      <div class="bar"><i></i><i></i><i></i><span>assistente AI · 2 connettori attivi</span></div>
+      <div class="body" id="client"></div>
+    </div>
+  </div>
+</header>
+
+<section id="cos-e">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Cos'è MCP, in breve</span>
+      <h2>Una presa standard tra l'AI e i tuoi programmi.</h2>
+      <p>MCP (Model Context Protocol) è lo standard aperto con cui gli assistenti AI usano strumenti esterni. Un connettore MCP insegna all'assistente a usare un gestionale preciso, con i permessi della persona che lo sta usando.</p>
+    </div>
+    <div class="what">
+      <div class="reveal"><div class="ic" style="background:#ede9ff">🔑</div><h3>Entri con le tue credenziali</h3><p>Al primo collegamento si apre una pagina di accesso: inserisci utente e password del gestionale, una volta sola. L'assistente vede solo quello che vedresti tu.</p></div>
+      <div class="reveal"><div class="ic" style="background:#dcfaf3">🗣️</div><h3>Chiedi a parole</h3><p>«Trovami il verbale di marzo», «cosa è cambiato da ieri?». L'assistente sceglie da solo lo strumento giusto e ti risponde con i dati veri.</p></div>
+      <div class="reveal"><div class="ic" style="background:#fff1dc">🧩</div><h3>Con l'assistente che preferisci</h3><p>Funziona con i connettori di claude.ai, con Claude Code e con gli altri client compatibili con MCP. Basta un indirizzo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">I connettori</span>
+      <h2>Due gestionali, già pronti a parlare.</h2>
+      <p>Qui sotto trovi solo quello che i connettori sanno già fare oggi. Il resto arriverà, e lo scriveremo quando sarà vero.</p>
+    </div>
+
+    <article class="mcp-prod reveal" id="cedhouse">
+      <div>
+        <div class="tags"><span class="soon">In arrivo</span><span>Sola lettura</span></div>
+        <h3><small>Connettore MCP per</small>CedHouse Suite</h3>
+        <p class="sub">Il portale del condominio, a parole. Per condòmini e studi di amministrazione.</p>
+        <a class="site" href="https://www.cedhousesuite.com/" target="_blank" rel="noopener">cedhousesuite.com ↗</a>
+        <div class="asks">
+          <span>«Quanto mi manca da pagare, e quando scade la prossima rata?»</span>
+          <span>«Trovami il verbale dell'ultima assemblea.»</span>
+          <span>«A che IBAN devo fare il bonifico?»</span>
+        </div>
+      </div>
+      <div class="feats">
+        <h4>Cosa sa fare</h4>
+        <ul>
+          <li><span class="t">💶</span><span><b>Rate e versamenti</b><small>rate da pagare, versamenti fatti ed estratto delle rate in PDF</small></span></li>
+          <li><span class="t">📂</span><span><b>Archivio documenti</b><small>cartelle, elenchi, ricerca e download di circolari, verbali, assicurazione e altro</small></span></li>
+          <li><span class="t">📖</span><span><b>Regolamento di condominio</b><small>con ricerca per argomento</small></span></li>
+          <li><span class="t">🧾</span><span><b>Detrazione fiscale</b><small>l'ultima comunicazione disponibile</small></span></li>
+          <li><span class="t">📊</span><span><b>Conti del condominio</b><small>gestioni contabili, spese di gestione, preventivo e consuntivo</small></span></li>
+          <li><span class="t">🏷️</span><span><b>Fatture e fornitori</b><small>fatture passive per anno e fornitori con i recapiti</small></span></li>
+          <li><span class="t">🏛️</span><span><b>Dati del portale</b><small>condomini disponibili e coordinate per i pagamenti</small></span></li>
+        </ul>
+        <p class="opt"><b>Per lo studio, attivabile:</b> situazione contabile, anagrafica, estratto conto, movimenti bancari e segnalazioni. Spenti di serie, si accendono solo per utenti di fiducia.</p>
+      </div>
+    </article>
+
+    <article class="mcp-prod reveal" id="gestendo">
+      <div>
+        <div class="tags"><span class="soon">In arrivo</span><span>Lettura e scrittura</span></div>
+        <h3><small>Connettore MCP per</small>Gestendo</h3>
+        <p class="sub">Gli interventi di manutenzione, a parole. Per amministratori e ditte di manutenzione.</p>
+        <a class="site" href="https://www.gestendo.it/" target="_blank" rel="noopener">gestendo.it ↗</a>
+        <div class="asks">
+          <span>«Cosa è cambiato negli interventi da ieri?»</span>
+          <span>«Apri un intervento per il citofono di Via dei Glicini 12.»</span>
+          <span>«Metti l'intervento 887 in lavorazione.»</span>
+        </div>
+      </div>
+      <div class="feats">
+        <h4>Cosa sa fare</h4>
+        <ul>
+          <li><span class="t">➕</span><span><b>Apre un intervento</b><small>con anteprima prima dell'invio e blocco dei doppioni degli ultimi 30 giorni</small></span></li>
+          <li><span class="t">✏️</span><span><b>Aggiorna un intervento</b><small>situazione, descrizione, categoria, criticità, referente e date, con verifica dopo il salvataggio</small></span></li>
+          <li><span class="t">🔔</span><span><b>Solo le novità</b><small>nuovi interventi, cambi di stato, appuntamenti e tecnici dall'ultima volta che hai chiesto</small></span></li>
+          <li><span class="t">📍</span><span><b>Stato in un colpo</b><small>situazione e appuntamento di uno o più interventi, dal numero</small></span></li>
+          <li><span class="t">🔎</span><span><b>Ricerca</b><small>per condominio, situazione, testo, tecnico e date</small></span></li>
+          <li><span class="t">📋</span><span><b>Dettaglio completo</b><small>tutti i dati dell'intervento, con relazione e allegati</small></span></li>
+          <li><span class="t">🗂️</span><span><b>Condomini e tecnici</b><small>gli elenchi di riferimento</small></span></li>
+        </ul>
+        <p class="opt"><b>Scegli tu l'accesso:</b> al collegamento decidi se dare sola lettura o anche scrittura. Il connettore non cancella mai nulla.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="common">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">In entrambi</span>
+      <h2>Ognuno vede solo il suo.</h2>
+      <p>Il connettore non apre porte nuove: usa quelle che hai già, con le tue chiavi.</p>
+    </div>
+    <div class="c-grid reveal">
+      <div><span>👤</span><b>Una persona, un accesso</b><p>Ogni utente entra con le proprie credenziali e vede solo i condomini e i dati che il gestionale gli mostra già.</p></div>
+      <div><span>🔐</span><b>Credenziali cifrate</b><p>Le password sono conservate cifrate. I token di accesso scadono e si rinnovano da soli, e si revocano in un attimo.</p></div>
+      <div><span>🚦</span><b>Accessi limitati</b><p>Si può decidere quali utenti possono collegarsi. I tentativi di accesso sono limitati, per tenere lontani i curiosi.</p></div>
+      <div><span>🔗</span><b>Collegamento in un passo</b><p>Dai all'assistente un indirizzo e fai l'accesso. Per chi preferisce, c'è anche il token personale.</p></div>
+      <div><span>☁️</span><b>Da noi o da te</b><p>Lo gestiamo noi in cloud, oppure lo installi sul tuo server: Docker o Kubernetes.</p></div>
+      <div><span>🏢</span><b>Pronto per l'Assistente H24</b><p>Sono gli stessi collegamenti che usa <a href="../condomini/" style="color:#fff">Assistente H24 – Condomini</a> per rispondere ai condòmini.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contatti">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Accesso anticipato</span>
+      <h2>Vuoi provarlo <em>per primo?</em></h2>
+      <p>Lasciaci due dati: ti avvisiamo quando i connettori sono disponibili e, se vuoi, ti facciamo provare la versione anticipata.</p>
+    </div>
+    <div class="form-card reveal">
+      <form name="contatti-mcp" method="POST" action="../grazie/" data-netlify="true" netlify-honeypot="sito-web">
+        <input type="hidden" name="form-name" value="contatti-mcp">
+        <input type="hidden" name="pagina" value="Connettori MCP">
+        <p class="hp"><label>Non compilare: <input name="sito-web" tabindex="-1" autocomplete="off"></label></p>
+        <div class="fgrid">
+          <div><label class="fl" for="p-nome">Nome e cognome</label><input id="p-nome" type="text" name="nome" autocomplete="name" required></div>
+          <div><label class="fl" for="p-email">E-mail</label><input id="p-email" type="email" name="email" autocomplete="email" required></div>
+          <div><label class="fl" for="p-ruolo">Chi sei</label>
+            <select id="p-ruolo" name="ruolo" required>
+              <option value="">Scegli…</option>
+              <option>Amministratore di condominio</option>
+              <option>Ditta di manutenzione</option>
+              <option>Condòmino</option>
+              <option>Sviluppatore o integratore</option>
+              <option>Altro</option>
+            </select>
+          </div>
+          <div><label class="fl" for="p-ai">Assistente AI che usi</label>
+            <select id="p-ai" name="assistente_ai">
+              <option value="">Scegli…</option>
+              <option>Claude (claude.ai)</option>
+              <option>Claude Code</option>
+              <option>Un altro client MCP</option>
+              <option>Ancora nessuno</option>
+            </select>
+          </div>
+          <div class="full"><span class="fl" style="display:block;font:600 13px Inter;margin-bottom:8px">Quale connettore ti interessa?</span>
+            <div class="checks">
+              <label><input type="checkbox" name="connettori[]" value="CedHouse Suite"><span>CedHouse Suite</span></label>
+              <label><input type="checkbox" name="connettori[]" value="Gestendo"><span>Gestendo</span></label>
+              <label><input type="checkbox" name="connettori[]" value="Un altro gestionale"><span>Un altro gestionale</span></label>
+            </div>
+          </div>
+          <div class="full"><label class="fl" for="p-msg">Cosa vorresti chiedergli? <i>(facoltativo)</i></label><textarea id="p-msg" name="messaggio" placeholder="Es. ogni mattina controllo a mano quali interventi sono cambiati…"></textarea></div>
+          <label class="consent full"><input type="checkbox" name="consenso" value="sì" required><span>Acconsento al trattamento dei dati che ho inserito, usati solo per rispondere a questa richiesta.</span></label>
+        </div>
+        <div class="form-foot">
+          <small>Niente newsletter: ti scriviamo solo per questo.</small>
+          <button type="submit">Avvisami →</button>
+        </div>
+        <p class="form-err" role="alert">Non siamo riusciti a inviare la richiesta. Riprova tra qualche minuto.</p>
+      </form>
+      <div class="form-ok" role="status">
+        <div class="ok-ic">✅</div>
+        <h3>Sei in lista.</h3>
+        <p>Ti scriviamo appena i connettori sono pronti da provare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Assistente H24 · Connettori MCP</span>
+    <span>CedHouse Suite e Gestendo sono marchi dei rispettivi titolari · <a href="../">Assistente H24</a></span>
+  </div>
+</footer>
+
+<script src="../assets/site.js" defer></script>
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sleep = ms => new Promise(r => setTimeout(r, reduce ? 0 : ms));
+
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30), {passive:true});
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Conversazione d'esempio (dati di fantasia)
+  const steps = [
+    ['u', 'Cosa è cambiato negli interventi da ieri?'],
+    ['call gs', 'gestendo · aggiornamenti_interventi', '3 novità'],
+    ['a', 'Da ieri:<ul><li><b>887/2026</b> citofono scala A → <b>in lavorazione</b>, tecnico giovedì alle 9</li><li><b>891/2026</b> nuovo: luci del box, Via dei Glicini 12</li><li><b>874/2026</b> cancello carrabile → <b>chiuso</b></li></ul>'],
+    ['u', 'E per Via dei Glicini, cosa si è deciso sulla facciata?'],
+    ['call ch', 'cedhouse · cerca_documenti', 'verbale 10/11'],
+    ['a', 'Nell\'assemblea del <b>10 novembre</b> è stato approvato il rifacimento della facciata, con lavori da marzo 2027 e pagamento in 6 rate (verbale, punto 2).'],
+  ];
+  const box = document.getElementById('client');
+  function el([k, a, b]) {
+    const d = document.createElement('div');
+    d.className = 'step ' + k;
+    if (k.startsWith('call')) d.innerHTML = `⚙ ${a} <small>→ ${b}</small>`;
+    else if (k === 'u') d.textContent = a;
+    else d.innerHTML = a;
+    return d;
+  }
+  (async function loop() {
+    while (true) {
+      box.innerHTML = '';
+      for (const s of steps) { await sleep(s[0] === 'u' ? 900 : 1300); box.appendChild(el(s)); }
+      if (reduce) return;
+      await sleep(7000);
+    }
+  })();
+})();
+</script>
+</body>
+</html>

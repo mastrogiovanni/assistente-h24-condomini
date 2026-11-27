@@ -1,7 +1,15 @@
 # Deploy su Netlify: sito statico, nessuna build.
+# Dominio di produzione: https://assistenteh24.com
 [build]
   publish = "."
   command = ""
+
+# Il dominio "www" porta al dominio principale.
+[[redirects]]
+  from = "https://www.assistenteh24.com/*"
+  to = "https://assistenteh24.com/:splat"
+  status = 301
+  force = true
 
 [[headers]]
   for = "/*"
@@ -11,7 +19,16 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
+# Le pagine HTML vengono sempre ricontrollate, così gli aggiornamenti si vedono subito.
 [[headers]]
-  for = "/index.html"
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/condomini/"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
