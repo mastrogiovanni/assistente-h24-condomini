@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portinaio — l'IA che lavora nel tuo condominio</title>
-<meta name="description" content="Portinaio è l'assistente IA che risponde ai condòmini su WhatsApp, Telegram e web, 24 ore su 24: legge i documenti, consulta il portale dell'amministrazione e apre davvero gli interventi di manutenzione.">
-<meta property="og:title" content="Portinaio — l'IA che lavora nel tuo condominio">
-<meta property="og:description" content="Non un chatbot: un collega. Risponde, verifica, agisce. Su WhatsApp, Telegram e web.">
+<title>Assistente H24 – Condomini · l'IA che non stacca mai</title>
+<meta name="description" content="Assistente H24 – Condomini è l'assistente IA che risponde ai condòmini su WhatsApp, Telegram e web, 24 ore su 24, 7 giorni su 7: legge i documenti, consulta il portale dell'amministrazione e apre davvero gli interventi di manutenzione.">
+<meta property="og:title" content="Assistente H24 – Condomini · l'IA che non stacca mai">
+<meta property="og:description" content="Non un chatbot: un collega sempre in servizio. Risponde, verifica, agisce, H24. Su WhatsApp, Telegram e web.">
 <meta name="theme-color" content="#0d1321">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d1321'/%3E%3Cpath d='M18 50V26l14-11 14 11v24H37V37H27v13z' fill='%23ffb547'/%3E%3Ccircle cx='44' cy='17' r='5' fill='%2337d6b5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,10 @@ nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,backdro
 nav.scrolled{background:rgba(13,19,33,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:700 20px Fraunces,serif}
-.logo svg{width:32px;height:32px}
+.logo svg{width:32px;height:32px;flex:none}
+.logo span{display:flex;flex-direction:column;line-height:1.05}
+.logo small{font:600 10px/1 Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-top:3px}
+@media (max-width:420px){.logo{font-size:17px}.navlinks .btn{padding:8px 12px;font-size:13px}}
 .navlinks{display:flex;gap:28px;align-items:center}
 .navlinks a{color:var(--on-ink-muted);text-decoration:none;font-size:14px;font-weight:500}
 .navlinks a:hover{color:#fff}
@@ -292,9 +295,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 <nav id="nav">
   <div class="wrap">
-    <a href="#" class="logo" aria-label="Portinaio">
+    <a href="#" class="logo" aria-label="Assistente H24 – Condomini">
       <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1e2840"/><path d="M18 50V26l14-11 14 11v24H37V37H27v13z" fill="#ffb547"/><circle cx="44" cy="17" r="5" fill="#37d6b5"/></svg>
-      Portinaio
+      <span>Assistente H24<small>Condomini</small></span>
     </a>
     <div class="navlinks">
       <a href="#demo">Demo</a>
@@ -312,8 +315,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   <div class="wrap">
     <div>
       <span class="pill"><b>NUOVO</b> L'IA che agisce, non solo risponde</span>
-      <h1>Il portinaio che <em>non dorme mai.</em></h1>
-      <p class="lead">Portinaio risponde ai condòmini su WhatsApp, Telegram e web, a qualsiasi ora. Legge regolamento e verbali, consulta il portale dell'amministrazione e <strong style="color:#fff">apre davvero gli interventi</strong> con la ditta di manutenzione. Tu ricevi solo quello che serve davvero a te.</p>
+      <h1>Il tuo condominio, assistito <em>H24.</em></h1>
+      <p class="lead">L'Assistente H24 risponde ai condòmini su WhatsApp, Telegram e web, giorno e notte, festivi compresi. Legge regolamento e verbali, consulta il portale dell'amministrazione e <strong style="color:#fff">apre davvero gli interventi</strong> con la ditta di manutenzione. Tu ricevi solo quello che serve davvero a te.</p>
       <div class="ctas">
         <a href="#demo" class="btn btn-primary">▶ Guarda la magia</a>
         <a href="#come-funziona" class="btn btn-ghost">Come funziona</a>
@@ -346,7 +349,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 <div class="stats">
   <div class="wrap">
-    <div class="stat"><b>24/7</b><span>risposte immediate, anche a Ferragosto</span></div>
+    <div class="stat"><b>H24</b><span>risposte immediate, anche a Ferragosto e alle 3 di notte</span></div>
     <div class="stat"><b>3<sup> canali</sup></b><span>un solo assistente, ovunque scrivano</span></div>
     <div class="stat"><b>0</b><span>dati personali scritti in chat</span></div>
     <div class="stat"><b>&lt;1<sup> min</sup></b><span>da "si è rotto il cancello" all'intervento aperto</span></div>
@@ -391,7 +394,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     <div class="sec-head reveal">
       <span class="eyebrow">Come funziona</span>
       <h2>Un cervello, tutti i canali, collegato ai sistemi che usi già.</h2>
-      <p>Portinaio non sostituisce il tuo gestionale: lo usa. Legge i documenti ufficiali, consulta il portale dell'amministrazione e parla con il gestionale della ditta di manutenzione, sempre dentro regole che non può aggirare. È <strong style="color:#fff">già integrato con CedHouse Suite e Gestendo</strong>.</p>
+      <p>L'Assistente H24 non sostituisce il tuo gestionale: lo usa. Legge i documenti ufficiali, consulta il portale dell'amministrazione e parla con il gestionale della ditta di manutenzione, sempre dentro regole che non può aggirare. È <strong style="color:#fff">già integrato con CedHouse Suite e Gestendo</strong>.</p>
     </div>
     <div class="flow reveal">
       <div class="col">
@@ -402,7 +405,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       <div class="arrow" aria-hidden="true"><svg viewBox="0 0 64 24"><path d="M2 12h56m-6-6 6 6-6 6"/></svg></div>
       <div class="brain">
         <div class="orb" aria-hidden="true"></div>
-        <h3>Il cervello di Portinaio</h3>
+        <h3>Il cervello dell'Assistente H24</h3>
         <p>Un agente IA con competenze dedicate e una guardia di sicurezza che controlla ogni azione.</p>
         <div class="chips">
           <span>avvisi</span><span>regolamento</span><span>assemblee</span><span>spese-e-scadenze</span><span>dati-personali</span><span>segnalazione-guasti</span>
@@ -420,7 +423,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       <div>
         <span class="eyebrow">Integrazioni</span>
         <h3>Già collegato ai gestionali che usi.</h3>
-        <p>Nessuna migrazione: Portinaio lavora direttamente sui tuoi dati. A breve anche Danea Domustudio, Gescon, Buffetti e Lemon.</p>
+        <p>Nessuna migrazione: l'Assistente H24 lavora direttamente sui tuoi dati. A breve anche Danea Domustudio, Gescon, Buffetti e Lemon.</p>
       </div>
       <div class="integr-list">
         <a class="partner" href="https://www.cedhousesuite.com/" target="_blank" rel="noopener"><span class="st">Integrato</span><b>CedHouse Suite</b><small>gestionale e portale per l'amministrazione condominiale</small></a>
@@ -439,14 +442,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     <div class="sec-head reveal">
       <span class="eyebrow">Cosa sa fare</span>
       <h2>Le domande di tutti i giorni, risolte da sole.</h2>
-      <p>Gran parte delle telefonate allo studio sono sempre le stesse domande. Portinaio le prende in carico con il tono gentile di una persona di fiducia e passa a te solo quello che richiede davvero l'amministratore.</p>
+      <p>Gran parte delle telefonate allo studio sono sempre le stesse domande. L'Assistente H24 le prende in carico a ogni ora, con il tono gentile di una persona di fiducia, e passa a te solo quello che richiede davvero l'amministratore. Lo studio chiude, l'assistenza no.</p>
     </div>
     <div class="feat-grid">
       <div class="feat big reveal">
         <div>
           <div class="ic" style="background:#ffffff14">🧠</div>
           <h3>Ogni condòmino ha la sua conversazione</h3>
-          <p>Portinaio ricorda il contesto di ogni chat, riconosce chi ha già verificato la propria identità e chiude la conversazione quando il problema è risolto. Cento condòmini insieme? Nessuna attesa.</p>
+          <p>L'Assistente H24 ricorda il contesto di ogni chat, riconosce chi ha già verificato la propria identità e chiude la conversazione quando il problema è risolto. Cento condòmini insieme? Nessuna attesa.</p>
         </div>
         <div class="mini-chats">
           <div class="mini"><i style="background:#25d366"></i><span>«Il citofono della scala A non va»</span><small>intervento aperto</small></div>
@@ -501,7 +504,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       <div class="sec-head reveal" style="margin-bottom:34px">
         <span class="eyebrow">Fiducia per progetto</span>
         <h2>Potente, ma con regole che non può infrangere.</h2>
-        <p>Le regole non sono raccomandazioni nel prompt: sono controlli nel codice. Anche se qualcuno prova a convincerlo, Portinaio non esce dal suo perimetro.</p>
+        <p>Le regole non sono raccomandazioni nel prompt: sono controlli nel codice. Anche se qualcuno prova a convincerlo, l'Assistente H24 non esce dal suo perimetro, a nessuna ora.</p>
       </div>
       <div class="rules">
         <div class="rule reveal"><div class="ic">🔒</div><div><b>Identità bloccata sulla chat</b><p>Dopo la verifica sul portale, quella chat vede solo i dati di quella persona e di quel condominio. Nessuno può "diventare" un altro. Dopo 5 tentativi sbagliati la verifica si blocca.</p></div></div>
@@ -514,7 +517,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     <div class="reveal" style="position:sticky;top:100px">
       <div class="vs">
         <table>
-          <thead><tr><th>Un chatbot qualsiasi</th><th>Portinaio</th></tr></thead>
+          <thead><tr><th>Un chatbot qualsiasi</th><th>Assistente H24</th></tr></thead>
           <tbody>
             <tr><td>Risponde con frasi generiche</td><td>Risponde dai tuoi documenti, citando l'articolo</td></tr>
             <tr><td>«Contatti l'amministratore»</td><td>Apre l'intervento e ti dice a che punto è</td></tr>
@@ -534,7 +537,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     <div class="admin-copy reveal">
       <span class="eyebrow">Per l'amministratore</span>
       <h2 style="font-size:clamp(32px,4.4vw,52px);margin:14px 0 16px">Meno telefonate.<br>Più controllo.</h2>
-      <p style="font-size:18px;color:var(--muted)">Un pannello riservato ti mostra ogni conversazione, il dettaglio tecnico di ogni risposta e lo stato di ogni canale. Sai sempre cosa ha detto Portinaio, e perché.</p>
+      <p style="font-size:18px;color:var(--muted)">Un pannello riservato ti mostra ogni conversazione, il dettaglio tecnico di ogni risposta e lo stato di ogni canale. Sai sempre cosa ha detto l'Assistente H24, anche di notte, e perché.</p>
       <ul>
         <li>Ogni risposta mostra i documenti letti e le azioni compiute</li>
         <li>Collegamento di WhatsApp con un QR, in un minuto</li>
@@ -571,9 +574,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     <div class="sec-head reveal"><span class="eyebrow">Domande frequenti</span><h2>Quello che ci chiedono di più.</h2></div>
     <div class="faq">
       <details class="reveal"><summary>I condòmini devono installare qualcosa?</summary><p>No. Scrivono su WhatsApp o Telegram come farebbero con un vicino. Chi preferisce può usare l'app web, che si installa sul telefono con un tocco e si apre con un codice del condominio.</p></details>
-      <details class="reveal"><summary>E se l'IA sbaglia o non sa la risposta?</summary><p>Portinaio risponde solo dai documenti ufficiali e dal portale, e cita la fonte. Quando l'informazione non c'è lo dice chiaramente e indica i recapiti dello studio. Le azioni (interventi, e-mail) partono solo dopo un riepilogo confermato, e le comunicazioni dello studio restano bozze finché non le invii tu.</p></details>
+      <details class="reveal"><summary>E se l'IA sbaglia o non sa la risposta?</summary><p>L'Assistente H24 risponde solo dai documenti ufficiali e dal portale, e cita la fonte. Quando l'informazione non c'è lo dice chiaramente e indica i recapiti dello studio. Le azioni (interventi, e-mail) partono solo dopo un riepilogo confermato, e le comunicazioni dello studio restano bozze finché non le invii tu.</p></details>
       <details class="reveal"><summary>Come protegge i dati personali?</summary><p>L'identità viene verificata sul portale dell'amministrazione e resta bloccata su quella chat. I dati economici non compaiono mai in chat: arrivano per e-mail all'indirizzo registrato in anagrafica. Il modello IA usa solo fornitori a conservazione zero, e i segreti sono custoditi in una cassaforte dedicata.</p></details>
-      <details class="reveal"><summary>Funziona con il mio gestionale?</summary><p>Portinaio è già integrato con <a href="https://www.cedhousesuite.com/" target="_blank" rel="noopener">CedHouse Suite</a> per l'amministrazione condominiale e con <a href="https://www.gestendo.it/" target="_blank" rel="noopener">Gestendo</a> per gli interventi di manutenzione. Saranno integrati a breve anche i gestionali condominiali più diffusi: Danea Domustudio, Gescon, Buffetti e Lemon. Se usi un gestionale diverso, scrivici e lo mettiamo in lista.</p></details>
+      <details class="reveal"><summary>Funziona con il mio gestionale?</summary><p>L'Assistente H24 è già integrato con <a href="https://www.cedhousesuite.com/" target="_blank" rel="noopener">CedHouse Suite</a> per l'amministrazione condominiale e con <a href="https://www.gestendo.it/" target="_blank" rel="noopener">Gestendo</a> per gli interventi di manutenzione. Saranno integrati a breve anche i gestionali condominiali più diffusi: Danea Domustudio, Gescon, Buffetti e Lemon. Se usi un gestionale diverso, scrivici e lo mettiamo in lista.</p></details>
       <details class="reveal"><summary>Dove gira?</summary><p>Su un server dello studio o in cloud, in container indipendenti: se un canale si ferma gli altri continuano a funzionare, e nessun messaggio va perso.</p></details>
     </div>
   </div>
@@ -582,9 +585,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <section class="cta" id="contatti">
   <div class="aurora" aria-hidden="true" style="opacity:.35"><span></span><span></span><span></span></div>
   <div class="wrap" style="position:relative">
-    <span class="eyebrow">Portinaio</span>
-    <h2 style="margin-top:16px">Dai ai tuoi condòmini un assistente <em>che c'è sempre.</em></h2>
-    <p>Ti mostriamo Portinaio sui documenti del tuo condominio, su WhatsApp, in venti minuti.</p>
+    <span class="eyebrow">Assistente H24 – Condomini</span>
+    <h2 style="margin-top:16px">Dai ai tuoi condòmini un assistente <em>che c'è H24.</em></h2>
+    <p>Ti mostriamo l'Assistente H24 sui documenti del tuo condominio, su WhatsApp, in venti minuti.</p>
     <div class="ctas" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
       <a class="btn btn-primary" href="https://github.com/mastrogiovanni" target="_blank" rel="noopener">Richiedi una demo →</a>
       <a class="btn btn-ghost" href="#demo">Rivedi la demo</a>
@@ -594,7 +597,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Portinaio · Assistente IA per condomini</span>
+    <span>© 2026 Assistente H24 – Condomini · L'IA sempre in servizio per il tuo condominio</span>
     <span>Nomi, indirizzi e dati negli esempi sono di fantasia.</span>
   </div>
 </footer>
@@ -735,7 +738,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         {b: 'Dalle 22 alle 7 va rispettato il silenzio (art. 14, comma 2). Ti consiglio prima di parlarne con gentilezza; se continua, puoi scrivere all\'amministratore: ti lascio i recapiti dello studio 📇'},
         {e: ['done', 'risposta con fonte', 'Solo dai documenti ufficiali: niente invenzioni.']},
       ],
-      result: {ic: '📖', bg: '#dcfaf3', title: 'Risposta con l\'articolo', text: 'Solo dai documenti ufficiali del condominio, con la fonte. Se un\'informazione non c\'è, Portinaio lo dice e indica chi contattare.', meta: ['regolamento.md', 'art. 14', 'contatti.md']}
+      result: {ic: '📖', bg: '#dcfaf3', title: 'Risposta con l\'articolo', text: 'Solo dai documenti ufficiali del condominio, con la fonte. Se un\'informazione non c\'è, l\'assistente lo dice e indica chi contattare.', meta: ['regolamento.md', 'art. 14', 'contatti.md']}
     }
   };
 
