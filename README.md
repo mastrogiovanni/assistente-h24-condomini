@@ -9,6 +9,7 @@ Nomi, indirizzi e dati negli esempi sono di fantasia.
 |---|---|
 | `index.html` | Landing della piattaforma Assistente H24 (agenti AI, adattatori MCP, autonomia progressiva, prodotti) |
 | `condomini/index.html` | Pagina prodotto a sé stante: Assistente H24 – Condomini, con demo interattiva |
+| `segnalazioni/index.html` | Pagina prodotto di Assistente H24 – Segnalazioni (in arrivo): segnalazioni, interventi e squadre, accendibile e spegnibile |
 | `mcp/index.html` | Pagina prodotto dei Connettori MCP (in arrivo) per CedHouse Suite e Gestendo, accendibile e spegnibile |
 | `grazie/index.html` | Pagina di conferma dopo l'invio di un form (usata se JavaScript è disattivato) |
 | `404.html` | Pagina "non trovata" servita da Netlify |
@@ -20,17 +21,18 @@ Nomi, indirizzi e dati negli esempi sono di fantasia.
 
 I link tra le pagine sono relativi, quindi il sito funziona anche aprendo i file in locale.
 
-## Interruttori: mostrare o nascondere i connettori MCP
+## Interruttori: mostrare o nascondere sezioni
 
 Si fa da un solo file, `assets/config.js`:
 
 ```js
 window.SITE_FEATURES = {
-  mcp: true,   // false = nasconde la pagina /mcp/ e tutte le voci che la richiamano
+  mcp: true,            // false = nasconde la pagina /mcp/ e tutte le voci che la richiamano
+  segnalazioni: true,   // false = nasconde la pagina /segnalazioni/ e tutte le voci che la richiamano
 };
 ```
 
-Con `mcp: false`:
+Con `mcp: false` (e allo stesso modo con `segnalazioni: false`):
 
 - spariscono le voci "Connettori MCP" nel menu Prodotti di tutte le pagine, la fascia nella sezione Prodotti della home e il link nel piè di pagina;
 - chi apre `/mcp/` direttamente viene riportato alla home;
@@ -61,10 +63,11 @@ Aggiorna anche la sezione `#prodotti` di `index.html` e `sitemap.xml`.
 
 ## Form di contatto (Netlify Forms)
 
-Ci sono tre form:
+Ci sono quattro form:
 
 - `contatti-assistente-h24` in `index.html`
 - `contatti-condomini` in `condomini/index.html`
+- `contatti-segnalazioni` in `segnalazioni/index.html`
 - `contatti-mcp` in `mcp/index.html` (lista d'attesa dei connettori)
 
 Netlify li riconosce al deploy grazie all'attributo `data-netlify="true"`. Le risposte arrivano in

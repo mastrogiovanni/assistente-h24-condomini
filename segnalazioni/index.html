@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="it" data-page-feature="segnalazioni">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../assets/config.js"></script>
+<title>Assistente H24 – Segnalazioni · guasti, interventi e squadre sotto controllo</title>
+<meta name="description" content="Assistente H24 – Segnalazioni trasforma le segnalazioni in interventi ordinati e ogni mattina suggerisce all'amministratore cosa fare: priorità, scadenze, squadra giusta, anomalie. Da solo o insieme a Gestendo.">
+<link rel="canonical" href="https://assistenteh24.com/segnalazioni/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://assistenteh24.com/segnalazioni/">
+<meta property="og:title" content="Assistente H24 – Segnalazioni">
+<meta property="og:description" content="Ogni guasto al suo posto, e nessuno dimenticato. L'AI che ti dice cosa fare per primo, e perché.">
+<meta name="theme-color" content="#0d1321">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d1321'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%23ffb547' stroke-width='7' stroke-linecap='round' stroke-dasharray='70 200' transform='rotate(-90 32 32)'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%2337d6b5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shared.css">
+<style>
+:root{
+  --ink:#0d1321; --ink-2:#151d30; --ink-3:#1e2840; --line:#2a3552;
+  --paper:#f7f4ee; --paper-2:#efe9de; --text:#1b2233; --muted:#5d6578;
+  --on-ink:#e9ecf4; --on-ink-muted:#9aa3ba;
+  --amber:#ffb547; --coral:#ff7a59; --teal:#37d6b5; --violet:#8b7bff; --red:#ff5d5d;
+  --radius:18px; --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--paper);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;line-height:1.08;letter-spacing:-.02em}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
+.eyebrow{font:600 12px/1 Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,backdrop-filter .3s}
+nav.scrolled{background:rgba(13,19,33,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:700 20px Fraunces,serif;white-space:nowrap}
+.logo svg{width:32px;height:32px;flex:none}
+.logo span{display:flex;flex-direction:column;line-height:1.05}
+.logo small{font:600 10px/1 Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-top:3px}
+.navlinks{display:flex;gap:28px;align-items:center}
+.navlinks > a{color:var(--on-ink-muted);text-decoration:none;font-size:14px;font-weight:500}
+.navlinks > a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;border-radius:999px;font:600 15px Inter;padding:13px 22px;text-decoration:none;transition:transform .15s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--amber);color:var(--ink);box-shadow:0 8px 30px -8px rgba(255,181,71,.6)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.16)}
+.navlinks .btn{padding:9px 16px;font-size:14px;color:var(--ink)}
+@media (max-width:820px){.navlinks > a:not(.btn){display:none}.navlinks{gap:16px}}
+@media (max-width:420px){.logo{font-size:17px}.navlinks .btn{padding:8px 12px;font-size:13px}}
+
+/* HERO */
+.hero{background:var(--ink);color:var(--on-ink);position:relative;overflow:hidden;padding:140px 0 100px}
+.aurora{position:absolute;inset:-20% -10% auto -10%;height:120%;pointer-events:none;filter:blur(70px);opacity:.5}
+.aurora span{position:absolute;border-radius:50%;animation:float 18s ease-in-out infinite}
+.aurora span:nth-child(1){width:520px;height:520px;background:#ff7a5966;left:-6%;top:6%}
+.aurora span:nth-child(2){width:460px;height:460px;background:#ffb54744;right:4%;top:-4%;animation-delay:-6s}
+.aurora span:nth-child(3){width:380px;height:380px;background:#37d6b544;left:40%;top:40%;animation-delay:-12s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.08)}}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media (max-width:960px){.hero .wrap{grid-template-columns:1fr}.hero{padding:116px 0 76px}}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);font-size:13px;color:var(--on-ink)}
+.pill b{background:var(--amber);color:var(--ink);border-radius:999px;padding:2px 8px;font-size:11px;letter-spacing:.05em}
+.hero h1{font-size:clamp(40px,5.8vw,70px);margin:22px 0 22px;color:#fff}
+.hero h1 em{font-style:italic;background:linear-gradient(100deg,var(--amber),var(--coral) 70%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.hero p.lead{font-size:clamp(17px,2vw,19.5px);color:var(--on-ink-muted);max-width:570px}
+.hero .ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+
+/* Il punto del mattino */
+.brief{background:#151d30;border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 50px 100px -40px rgba(0,0,0,.8)}
+.brief-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;gap:12px}
+.brief-head b{font:700 20px Fraunces,serif;color:#fff}
+.brief-head small{display:block;color:var(--on-ink-muted);font-size:12.5px}
+.brief-head .count{font:600 12px Inter;color:var(--amber);white-space:nowrap}
+.sug{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:13px 12px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);margin-top:8px;transition:opacity .3s,background .3s}
+.sug input{margin-top:3px;width:17px;height:17px;accent-color:var(--amber)}
+.sug .k{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:600 11px/1 Inter;letter-spacing:.06em;text-transform:uppercase}
+.sug .k span{padding:4px 7px;border-radius:999px}
+.k .r{background:#ff5d5d26;color:#ff8f8f}.k .o{background:#ff7a5926;color:#ff9b80}.k .y{background:#ffb54726;color:#ffc66b}.k .v{background:#8b7bff26;color:#b0a6ff}.k .t{background:#37d6b526;color:#5fe3c7}
+.sug .k em{font-style:normal;color:var(--on-ink-muted);letter-spacing:0;text-transform:none;font-weight:500;font-size:12px}
+.sug b{display:block;color:#fff;font-size:14px;margin:6px 0 3px}
+.sug small{display:block;color:var(--on-ink-muted);font-size:12.5px;line-height:1.45}
+.sug.done{opacity:.45}
+.brief-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}
+.brief-foot small{color:var(--on-ink-muted);font-size:12.5px}
+.brief-foot button{font:600 13.5px Inter;border:0;border-radius:999px;padding:10px 16px;background:var(--amber);color:var(--ink);cursor:pointer}
+.brief-foot button:disabled{opacity:.4;cursor:default}
+
+section{padding:110px 0}
+@media (max-width:700px){section{padding:76px 0}}
+.sec-head{max-width:740px;margin-bottom:52px}
+.sec-head h2{font-size:clamp(32px,4.4vw,52px);margin:14px 0 16px}
+.sec-head p{font-size:18px;color:var(--muted)}
+
+/* Dalla segnalazione all'intervento */
+.flow{display:grid;grid-template-columns:1fr auto 1.1fr auto 1fr;gap:18px;align-items:center}
+@media (max-width:960px){.flow{grid-template-columns:1fr}.flow .arr{transform:rotate(90deg);justify-self:center}}
+.flow .arr{color:#c9bfac;font-size:26px}
+.box{background:#fff;border:1px solid #e6dfd1;border-radius:20px;padding:22px}
+.box h3{font-size:20px;margin-bottom:12px}
+.said{display:flex;flex-direction:column;gap:8px}
+.said span{font-size:14px;background:var(--paper);border-radius:12px 12px 12px 4px;padding:9px 12px;font-style:italic}
+.said small{font-size:12px;color:var(--muted);font-style:normal;display:block;margin-top:2px}
+.box.ai{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.box.ai h3{color:#fff}
+.box.ai ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.box.ai li{font-size:14px;display:flex;gap:9px;color:var(--on-ink-muted)}
+.box.ai li::before{content:"✦";color:var(--amber);flex:none}
+.ticket{font-size:14px}
+.ticket .row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed #e6dfd1}
+.ticket .row:last-child{border:0}
+.ticket .row small{color:var(--muted)}
+.ticket .row b{text-align:right}
+.ticket .prio{color:#c2410c}
+
+/* Cosa tiene d'occhio */
+.watch{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media (max-width:800px){.watch{grid-template-columns:1fr}}
+.w{background:#fff;border:1px solid #e6dfd1;border-radius:var(--radius);padding:30px;display:flex;flex-direction:column;gap:10px}
+.w .ic{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;font-size:22px}
+.w h3{font-size:24px}
+.w p{color:var(--muted);font-size:15.5px}
+.w .eg{margin-top:auto;font-size:13.5px;background:var(--paper);border-radius:12px;padding:11px 13px}
+.w .eg b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+
+/* Regole */
+.rules{background:var(--ink);color:var(--on-ink)}
+.rules h2{color:#fff}
+.rules .sec-head p{color:var(--on-ink-muted)}
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+@media (max-width:900px){.rules-grid{grid-template-columns:1fr}}
+.sla{background:#151d30;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.sla table{width:100%;border-collapse:collapse;font-size:14.5px}
+.sla th,.sla td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+.sla th{font:600 11px Inter;letter-spacing:.1em;text-transform:uppercase;color:var(--on-ink-muted)}
+.sla td b{color:#fff}
+.sla tr:last-child td{border-bottom:0}
+.sla .cap{padding:12px 18px;font-size:12.5px;color:var(--on-ink-muted);background:rgba(255,255,255,.03)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px}
+.points{display:flex;flex-direction:column;gap:16px}
+.points div{display:grid;grid-template-columns:40px 1fr;gap:14px}
+.points .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.06);font-size:18px}
+.points b{color:#fff;display:block;font-size:16px;margin-bottom:3px}
+.points p{color:var(--on-ink-muted);font-size:14.5px}
+
+/* Integrazione */
+.integ{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:800px){.integ{grid-template-columns:1fr}}
+.opt{border-radius:24px;padding:32px;background:#fff;border:1px solid #e6dfd1}
+.opt .st{display:inline-block;font:600 11px/1 Inter;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:var(--paper-2);color:var(--muted);margin-bottom:14px}
+.opt h3{font-size:26px;margin-bottom:10px}
+.opt p{color:var(--muted)}
+.opt a{color:var(--coral);font-weight:600;text-decoration:none}
+.opt ul{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.opt li{font-size:14.5px;display:flex;gap:9px}
+.opt li::before{content:"→";color:var(--teal);flex:none}
+
+/* Contatti */
+.cta{background:var(--paper-2)}
+.cta .sec-head{text-align:center;margin:0 auto 40px}
+.cta h2 em{font-style:italic;color:var(--coral)}
+.cta .form-card{box-shadow:0 30px 70px -40px rgba(13,19,33,.45);border:1px solid #e6dfd1}
+footer{background:#080c16;color:var(--on-ink-muted);padding:34px 0;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:var(--on-ink);text-decoration:none}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="./" class="logo" aria-label="Assistente H24 – Segnalazioni">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1e2840"/><circle cx="32" cy="32" r="15" fill="none" stroke="#ffb547" stroke-width="7" stroke-linecap="round" stroke-dasharray="70 200" transform="rotate(-90 32 32)"/><circle cx="32" cy="32" r="5" fill="#37d6b5"/></svg>
+      <span>Assistente H24<small>Segnalazioni</small></span>
+    </a>
+    <div class="navlinks">
+      <a href="#come-funziona">Come funziona</a>
+      <a href="#proattivo">Cosa tiene d'occhio</a>
+      <a href="#integrazione">Con il tuo gestionale</a>
+      <div class="dd">
+        <button class="dd-btn" aria-expanded="false" aria-controls="dd-prodotti">Prodotti <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <div class="dd-panel" id="dd-prodotti">
+          <div class="dd-title">Prodotti</div>
+          <a class="dd-item" href="../condomini/"><span class="di">🏢</span><span><b>Condomini <span class="tag">Disponibile</span></b><small>Risponde ai condòmini H24 e apre gli interventi di manutenzione</small></span></a>
+          <a class="dd-item" href="./" data-feature="segnalazioni"><span class="di">🛠️</span><span><b>Segnalazioni <span class="tag soon">In arrivo</span></b><small>Stai guardando questo prodotto</small></span></a>
+          <div class="dd-item soon"><span class="di">📁</span><span><b>Studi professionali <span class="tag">In arrivo</span></b><small>Scadenze, documenti e domande dei clienti</small></span></div>
+          <div data-feature="mcp">
+            <div class="dd-title dd-sep">Connettori MCP</div>
+            <a class="dd-item" href="../mcp/#cedhouse"><span class="di">🔌</span><span><b>MCP per CedHouse Suite <span class="tag soon">In arrivo</span></b><small>Rate, documenti e regolamento nel tuo assistente AI</small></span></a>
+            <a class="dd-item" href="../mcp/#gestendo"><span class="di">🔧</span><span><b>MCP per Gestendo <span class="tag soon">In arrivo</span></b><small>Apri e segui gli interventi di manutenzione a parole</small></span></a>
+          </div>
+          <a class="dd-item" href="../"><span class="di">✦</span><span><b>La piattaforma Assistente H24</b><small>Agenti AI che imparano come lavori, per ogni settore</small></span></a>
+        </div>
+      </div>
+      <a href="#contatti" class="btn btn-primary">Richiedi una demo</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <span class="pill"><b>IN ARRIVO</b> Segnalazioni, interventi e squadre</span>
+      <h1>Ogni guasto al suo posto. <em>E nessuno dimenticato.</em></h1>
+      <p class="lead">Assistente H24 – Segnalazioni raccoglie le segnalazioni, le trasforma in interventi ordinati e tiene d'occhio tutto il resto: priorità, scadenze, squadre. Ogni mattina ti dice cosa fare per primo, e perché. Poi decidi tu.</p>
+      <div class="ctas">
+        <a href="#contatti" class="btn btn-primary">Richiedi una demo →</a>
+        <a href="#proattivo" class="btn btn-ghost">Cosa tiene d'occhio</a>
+      </div>
+    </div>
+    <div class="brief" aria-label="Esempio: i suggerimenti del mattino">
+      <div class="brief-head">
+        <div><b>Il punto del mattino</b><small>martedì, 4 suggerimenti su 62 interventi aperti</small></div>
+        <span class="count" id="sel-count">0 selezionati</span>
+      </div>
+      <label class="sug"><input type="checkbox"><span><span class="k"><span class="r">Scadenza superata</span><em>#887 · Via dei Glicini 12</em></span><b>Perdita d'acqua in garage: urgente da 2 giorni, nessuna squadra</b><small>Assegna a <b style="display:inline;color:#fff;font-size:12.5px">Squadra Rossi</b>: idraulica, 14 interventi e 13 conclusi; già 5 volte in questo condominio; 6 aperti.</small></span></label>
+      <label class="sug"><input type="checkbox"><span><span class="k"><span class="o">Priorità</span><em>#891 · Via Manzoni 4</em></span><b>Da ordinario a media: «luci spente in scala B»</b><small>Più lampade spente nella stessa scala, non una lampadina sola.</small></span></label>
+      <label class="sug"><input type="checkbox"><span><span class="k"><span class="y">Da controllare</span><em>#874 · Corso Italia 30</em></span><b>Appuntamento passato ieri, situazione non aggiornata</b><small>Chiedere alla squadra se il lavoro è stato fatto.</small></span></label>
+      <label class="sug"><input type="checkbox"><span><span class="k"><span class="v">Possibile doppione</span><em>#893 e #889</em></span><b>Stesso cancello, stesso condominio, due interventi aperti</b><small>Unire le due segnalazioni e avvisare chi ha scritto.</small></span></label>
+      <div class="brief-foot">
+        <small>Niente cambia finché non confermi.</small>
+        <button type="button" id="apply" disabled>Applica i selezionati</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="come-funziona">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Dalla segnalazione all'intervento</span>
+      <h2>Arriva come capita. Esce in ordine.</h2>
+      <p>Le segnalazioni arrivano dai condòmini, dal portiere, dai fornitori, per e-mail, WhatsApp o telefono, scritte di fretta. L'assistente le capisce, chiede quello che manca e prepara un intervento pulito, con la priorità giusta.</p>
+    </div>
+    <div class="flow reveal">
+      <div class="box">
+        <h3>Come arriva</h3>
+        <div class="said">
+          <span>«si è rotta la lampadina sul pianerottolo del terzo»<small>WhatsApp · condòmino</small></span>
+          <span>«il tubo in cantina perde, c'è acqua per terra»<small>e-mail · portiere</small></span>
+          <span>«a dicembre va fatta la manutenzione ordinaria del cancello»<small>nota dello studio</small></span>
+        </div>
+      </div>
+      <div class="arr" aria-hidden="true">→</div>
+      <div class="box ai">
+        <h3>Cosa fa l'assistente</h3>
+        <ul>
+          <li>Riconosce condominio, zona e tipo di guasto</li>
+          <li>Chiede quello che manca: scala, piano, un recapito</li>
+          <li>Dà la priorità, citando la regola usata</li>
+          <li>Controlla che non ci sia già un intervento aperto uguale</li>
+          <li>Le manutenzioni ordinarie diventano interventi programmati</li>
+        </ul>
+      </div>
+      <div class="arr" aria-hidden="true">→</div>
+      <div class="box ticket">
+        <h3>Cosa esce</h3>
+        <div class="row"><small>Intervento</small><b>#902</b></div>
+        <div class="row"><small>Condominio</small><b>Via dei Glicini 12</b></div>
+        <div class="row"><small>Descrizione</small><b>Perdita attiva dal tubo in cantina, acqua a terra</b></div>
+        <div class="row"><small>Categoria</small><b>Idraulica</b></div>
+        <div class="row"><small>Priorità</small><b class="prio">Urgente</b></div>
+        <div class="row"><small>Squadra suggerita</small><b>Squadra Rossi</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proattivo" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Cosa tiene d'occhio</span>
+      <h2>Non aspetta che qualcuno si lamenti.</h2>
+      <p>Ogni giorno ripassa tutti gli interventi aperti, come farebbe un capo squadra con molta memoria e poca fretta. Quando qualcosa non torna, te lo propone con i numeri alla mano.</p>
+    </div>
+    <div class="watch">
+      <div class="w reveal">
+        <div class="ic" style="background:#ffe6de">🚦</div>
+        <h3>La priorità giusta</h3>
+        <p>Urgente, media o ordinaria, decisa dalla descrizione e non da chi alza la voce. Una perdita attiva è urgente, una lampadina sola è ordinaria. Se la priorità scritta non torna, propone di cambiarla.</p>
+        <div class="eg"><b>Esempio</b>«Da ordinario a media: più lampade spente nella stessa scala.»</div>
+      </div>
+      <div class="w reveal">
+        <div class="ic" style="background:#fff1dc">⏱️</div>
+        <h3>Le scadenze</h3>
+        <p>Per ogni priorità c'è un tempo per prendere in carico e uno per chiudere. Ti avvisa quando un intervento è a rischio, prima che la scadenza passi, e quando un preventivo aspetta risposta da troppo.</p>
+        <div class="eg"><b>Esempio</b>«Media, aperto da 3 giorni senza squadra: a rischio.»</div>
+      </div>
+      <div class="w reveal">
+        <div class="ic" style="background:#dcfaf3">👷</div>
+        <h3>La squadra giusta</h3>
+        <p>Guarda lo storico: chi ha già messo mano a quel guasto, chi fa bene quel tipo di lavoro, chi conosce il condominio, chi è già carico. E se una squadra ha già un appuntamento lì, le passa anche questo: un viaggio solo.</p>
+        <div class="eg"><b>Esempio</b>«Squadra Bianchi: elettrico, 13 conclusi su 14; ha già un appuntamento in Via Manzoni giovedì.»</div>
+      </div>
+      <div class="w reveal">
+        <div class="ic" style="background:#ede9ff">🔍</div>
+        <h3>Quello che non torna</h3>
+        <p>Appuntamenti passati senza aggiornamento, lavori da ritornare senza una nuova data, segnalazioni doppie, descrizioni troppo vaghe per mandare qualcuno.</p>
+        <div class="eg"><b>Esempio</b>«Da ritornare da 9 giorni, nessun nuovo appuntamento.»</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rules">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Le regole sono tue</span>
+      <h2>Suggerisce, spiega, aspetta.</h2>
+      <p>L'assistente non decide di testa sua: segue regole scritte in chiaro, che puoi cambiare senza toccare una riga di codice. E ogni suggerimento dice quale regola ha usato.</p>
+    </div>
+    <div class="rules-grid">
+      <div class="sla reveal">
+        <table>
+          <thead><tr><th>Priorità</th><th>Presa in carico</th><th>Lavoro fatto</th></tr></thead>
+          <tbody>
+            <tr><td><span class="dot" style="background:var(--red)"></span><b>Urgente</b></td><td>1 giorno</td><td>3 giorni</td></tr>
+            <tr><td><span class="dot" style="background:var(--amber)"></span><b>Media</b></td><td>4 giorni</td><td>15 giorni</td></tr>
+            <tr><td><span class="dot" style="background:var(--teal)"></span><b>Ordinaria</b></td><td>10 giorni</td><td>30 giorni</td></tr>
+          </tbody>
+        </table>
+        <div class="cap">Tempi di partenza, li adatti ai tuoi contratti. Avviso «a rischio» al 75% del tempo.</div>
+      </div>
+      <div class="points reveal">
+        <div><span class="ic">☑️</span><span><b>Spunti e applichi</b><p>I suggerimenti arrivano in una lista: scegli quali applicare, gli altri li scarti. Niente parte da solo.</p></span></div>
+        <div><span class="ic">🧾</span><span><b>Ogni scelta con il suo perché</b><p>Con i numeri usati e la regola citata. Per chi vuole, anche il ragionamento completo e il costo dell'AI per ogni decisione.</p></span></div>
+        <div><span class="ic">✍️</span><span><b>Le tue squadre, le tue zone</b><p>Specializzazioni, zone e abilitazioni che lo storico non mostra le aggiungi tu, e da lì in poi contano.</p></span></div>
+        <div><span class="ic">🔒</span><span><b>Dati dei condomini al sicuro</b><p>Fornitori AI che non conservano i dati. L'assistente legge solo quello che serve all'analisi.</p></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="integrazione">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Con il tuo gestionale</span>
+      <h2>Si appoggia a quello che hai. O fa da sé.</h2>
+      <p>Se le segnalazioni le gestisci già con un programma, l'assistente lavora lì dentro. Se oggi usi e-mail, fogli e telefono, ti dà lui un posto ordinato dove tenerle.</p>
+    </div>
+    <div class="integ">
+      <div class="opt reveal">
+        <span class="st">Integrato</span>
+        <h3>Con Gestendo</h3>
+        <p>Legge interventi, situazioni, appuntamenti e tecnici da <a href="https://www.gestendo.it/" target="_blank" rel="noopener">Gestendo</a>, e ci riscrive solo quello che hai approvato. La ditta continua a lavorare come prima.</p>
+        <ul>
+          <li>Nessuna migrazione, nessun doppio inserimento</li>
+          <li>Priorità e squadre scritte direttamente negli interventi</li>
+          <li data-feature="mcp">Lo stesso collegamento del <a href="../mcp/#gestendo">connettore MCP per Gestendo</a></li>
+        </ul>
+      </div>
+      <div class="opt reveal">
+        <span class="st">Da solo</span>
+        <h3>Senza gestionale</h3>
+        <p>Un elenco di interventi semplice, con stati, appuntamenti e squadre, già pronto per i suggerimenti dell'assistente.</p>
+        <ul>
+          <li>Segnalazioni da e-mail, WhatsApp e modulo web</li>
+          <li>Storico per condominio e per squadra</li>
+          <li>Usi un altro gestionale? <a href="#contatti">Diccelo</a>, gli costruiamo un adattatore</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contatti">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Parliamone</span>
+      <h2>Quanti interventi hai aperti <em>in questo momento?</em></h2>
+      <p>Se la risposta è «non lo so di preciso», è il caso di sentirci. Ti mostriamo l'assistente sui tuoi interventi veri.</p>
+    </div>
+    <div class="form-card reveal">
+      <form name="contatti-segnalazioni" method="POST" action="../grazie/" data-netlify="true" netlify-honeypot="sito-web">
+        <input type="hidden" name="form-name" value="contatti-segnalazioni">
+        <input type="hidden" name="pagina" value="Assistente H24 – Segnalazioni">
+        <p class="hp"><label>Non compilare: <input name="sito-web" tabindex="-1" autocomplete="off"></label></p>
+        <div class="fgrid">
+          <div><label class="fl" for="s-nome">Nome e cognome</label><input id="s-nome" type="text" name="nome" autocomplete="name" required></div>
+          <div><label class="fl" for="s-email">E-mail</label><input id="s-email" type="email" name="email" autocomplete="email" required></div>
+          <div><label class="fl" for="s-tel">Telefono <i>(facoltativo)</i></label><input id="s-tel" type="tel" name="telefono" autocomplete="tel"></div>
+          <div><label class="fl" for="s-ruolo">Chi sei</label>
+            <select id="s-ruolo" name="ruolo" required>
+              <option value="">Scegli…</option>
+              <option>Amministratore di condominio</option>
+              <option>Ditta di manutenzione</option>
+              <option>Ufficio tecnico</option>
+              <option>Altro</option>
+            </select>
+          </div>
+          <div><label class="fl" for="s-vol">Segnalazioni al mese</label>
+            <select id="s-vol" name="segnalazioni_mese" required>
+              <option value="">Scegli…</option>
+              <option>Meno di 30</option>
+              <option>30–100</option>
+              <option>100–300</option>
+              <option>Più di 300</option>
+            </select>
+          </div>
+          <div><label class="fl" for="s-sis">Come le gestisci oggi</label>
+            <select id="s-sis" name="sistema_attuale" required>
+              <option value="">Scegli…</option>
+              <option>Gestendo</option>
+              <option>Un altro gestionale</option>
+              <option>E-mail, fogli e telefono</option>
+              <option>Non le gestiamo in modo ordinato</option>
+            </select>
+          </div>
+          <div class="full"><label class="fl" for="s-msg">Cosa ti fa perdere più tempo? <i>(facoltativo)</i></label><textarea id="s-msg" name="messaggio" placeholder="Es. capire quali interventi sono fermi, scegliere chi mandare, rispondere ai condòmini che chiedono a che punto siamo…"></textarea></div>
+          <label class="consent full"><input type="checkbox" name="consenso" value="sì" required><span>Acconsento al trattamento dei dati che ho inserito, usati solo per rispondere a questa richiesta.</span></label>
+        </div>
+        <div class="form-foot">
+          <small>Ti ricontattiamo per fissare la demo, in videochiamata.</small>
+          <button type="submit">Richiedi la demo →</button>
+        </div>
+        <p class="form-err" role="alert">Non siamo riusciti a inviare la richiesta. Riprova tra qualche minuto.</p>
+      </form>
+      <div class="form-ok" role="status">
+        <div class="ok-ic">✅</div>
+        <h3>Richiesta ricevuta.</h3>
+        <p>Ti scriviamo a breve per fissare la demo sui tuoi interventi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Assistente H24 – Segnalazioni</span>
+    <span>Un prodotto <a href="../">Assistente H24</a> · Nomi, indirizzi e dati negli esempi sono di fantasia.</span>
+  </div>
+</footer>
+
+<script src="../assets/site.js" defer></script>
+<script>
+(() => {
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30), {passive:true});
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Il punto del mattino: spunta e "applica" (solo dimostrativo)
+  const boxes = [...document.querySelectorAll('.sug input')];
+  const count = document.getElementById('sel-count');
+  const apply = document.getElementById('apply');
+  const update = () => {
+    const n = boxes.filter(b => b.checked && !b.disabled).length;
+    count.textContent = n + (n === 1 ? ' selezionato' : ' selezionati');
+    apply.disabled = n === 0;
+  };
+  boxes.forEach(b => b.addEventListener('change', update));
+  apply.addEventListener('click', () => {
+    boxes.filter(b => b.checked && !b.disabled).forEach(b => { b.disabled = true; b.closest('.sug').classList.add('done'); });
+    const left = boxes.filter(b => !b.disabled).length;
+    count.textContent = left ? `${4 - left} applicati` : 'Tutto fatto ✓';
+    apply.disabled = true;
+  });
+})();
+</script>
+</body>
+</html>

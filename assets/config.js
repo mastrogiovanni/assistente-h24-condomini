@@ -4,7 +4,8 @@
 //  false = la sezione sparisce ovunque e la sua pagina rimanda alla home
 // ============================================================
 window.SITE_FEATURES = {
-  mcp: true,   // Connettori MCP (CedHouse Suite, Gestendo): pagina /mcp/ e voci di menu
+  mcp: true,            // Connettori MCP (CedHouse Suite, Gestendo): pagina /mcp/ e voci di menu
+  segnalazioni: true,   // Assistente H24 – Segnalazioni: pagina /segnalazioni/ e voci di menu
 };
 
 // ------------------------------------------------------------

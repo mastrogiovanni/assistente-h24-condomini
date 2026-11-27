@@ -189,6 +189,10 @@ section{padding:110px 0}
 .prod.soon .st{background:var(--paper-2);color:var(--muted)}
 .prod.soon h3{font-size:22px;margin:12px 0 6px}
 .prod.soon p{color:var(--muted);font-size:14.5px}
+.prod.link{display:block;text-decoration:none;color:var(--text);transition:transform .25s,box-shadow .25s}
+.prod.link:hover{transform:translateY(-3px);box-shadow:0 24px 50px -28px rgba(13,19,33,.35)}
+.prod.link .st{background:#fff1dc;color:#b86e00}
+.prod.link .go{display:block;margin-top:10px;font-weight:600;font-size:14px;color:var(--coral)}
 .prod.yours{background:transparent;border:1.5px dashed #c9bfac;padding:24px}
 .prod.yours h3{font-size:22px;margin-bottom:6px}
 .prod.yours p{color:var(--muted);font-size:14.5px}
@@ -251,8 +255,8 @@ footer a{color:var(--on-ink);text-decoration:none}
         <div class="dd-panel" id="dd-prodotti">
           <div class="dd-title">Prodotti</div>
           <a class="dd-item" href="condomini/"><span class="di">🏢</span><span><b>Condomini <span class="tag">Disponibile</span></b><small>Risponde ai condòmini H24 e apre gli interventi di manutenzione</small></span></a>
+          <a class="dd-item" href="segnalazioni/" data-feature="segnalazioni"><span class="di">🛠️</span><span><b>Segnalazioni <span class="tag soon">In arrivo</span></b><small>Interventi e squadre, con l'AI che suggerisce cosa fare</small></span></a>
           <div class="dd-item soon"><span class="di">📁</span><span><b>Studi professionali <span class="tag">In arrivo</span></b><small>Scadenze, documenti e domande dei clienti</small></span></div>
-          <div class="dd-item soon"><span class="di">🛠️</span><span><b>Assistenza tecnica <span class="tag">In arrivo</span></b><small>Richieste, interventi e ricambi</small></span></div>
           <div data-feature="mcp">
             <div class="dd-title dd-sep">Connettori MCP</div>
             <a class="dd-item" href="mcp/#cedhouse"><span class="di">🔌</span><span><b>MCP per CedHouse Suite <span class="tag soon">In arrivo</span></b><small>Rate, documenti e regolamento nel tuo assistente AI</small></span></a>
@@ -410,7 +414,7 @@ footer a{color:var(--on-ink);text-decoration:none}
       </div>
       <div class="soon-col">
         <div class="prod soon reveal"><span class="st">In arrivo</span><h3>Studi professionali</h3><p>Scadenze, documenti da raccogliere e le domande dei clienti che tornano ogni mese.</p></div>
-        <div class="prod soon reveal"><span class="st">In arrivo</span><h3>Assistenza tecnica</h3><p>Richieste di intervento, ricambi e aggiornamenti ai clienti, senza rincorrere nessuno.</p></div>
+        <a class="prod soon link reveal" href="segnalazioni/" data-feature="segnalazioni"><span class="st">In arrivo</span><h3>Segnalazioni</h3><p>Dalla lampadina rotta al tubo che perde: interventi in ordine e un'AI che ogni mattina suggerisce priorità, scadenze e squadre.</p><span class="go">Scopri Assistente H24 – Segnalazioni →</span></a>
         <div class="prod yours reveal"><h3>E il tuo settore?</h3><p>I prossimi prodotti nascono dai processi che ci raccontate. <a href="#contatti">Raccontaci il tuo →</a></p></div>
       </div>
     </div>
@@ -506,7 +510,7 @@ footer a{color:var(--on-ink);text-decoration:none}
 <footer>
   <div class="wrap">
     <span>© 2026 Assistente H24 · assistenteh24.com</span>
-    <span><a href="condomini/">Assistente H24 – Condomini</a><span data-feature="mcp"> · <a href="mcp/">Connettori MCP</a></span> · Altri prodotti in arrivo</span>
+    <span><a href="condomini/">Assistente H24 – Condomini</a><span data-feature="segnalazioni"> · <a href="segnalazioni/">Segnalazioni</a></span><span data-feature="mcp"> · <a href="mcp/">Connettori MCP</a></span> · Altri prodotti in arrivo</span>
   </div>
 </footer>
 
