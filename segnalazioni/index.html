@@ -128,6 +128,36 @@ section{padding:110px 0}
 .w .eg{margin-top:auto;font-size:13.5px;background:var(--paper);border-radius:12px;padding:11px 13px}
 .w .eg b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 
+/* Chi ci va */
+.assign{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:stretch}
+@media (max-width:900px){.assign{grid-template-columns:1fr}}
+.handoff{background:var(--ink);color:var(--on-ink);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:10px;min-height:380px}
+.handoff .hh{display:flex;justify-content:space-between;align-items:center;font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--on-ink-muted);margin-bottom:4px}
+.handoff .hh i{width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block;margin-right:7px}
+.bub{background:#1e2840;border-radius:16px 16px 16px 4px;padding:13px 15px;font-size:14.5px;line-height:1.5;max-width:92%;white-space:pre-line;animation:pop .35s ease-out both}
+.bub b{color:#fff}
+.bub.me{align-self:flex-end;background:var(--amber);color:var(--ink);border-radius:16px 16px 4px 16px;font-weight:600}
+.choices{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.choices button{font:600 13.5px Inter;border-radius:999px;padding:9px 14px;cursor:pointer;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;transition:background .2s}
+.choices button:hover{background:rgba(255,255,255,.08)}
+.choices button.yes{background:var(--amber);border-color:var(--amber);color:var(--ink)}
+.handoff .again{margin-top:auto;align-self:flex-start;font:600 13px Inter;background:none;border:0;color:var(--on-ink-muted);cursor:pointer;padding:6px 0;display:none}
+.handoff .again.show{display:inline}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.why{background:#fff;border:1px solid #e6dfd1;border-radius:24px;padding:26px;display:flex;flex-direction:column}
+.why h3{font-size:22px;margin-bottom:4px}
+.why > p{color:var(--muted);font-size:14.5px;margin-bottom:14px}
+.cand{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:13px 0;border-top:1px solid #ece6da}
+.cand .av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:15px;background:var(--paper-2)}
+.cand b{display:block;font-size:15px}
+.cand small{display:block;color:var(--muted);font-size:13px;line-height:1.4}
+.cand .badge{font:600 11px/1 Inter;letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:999px;background:var(--paper-2);color:var(--muted);white-space:nowrap}
+.cand.top .av{background:#dcfaf3}
+.cand.top .badge{background:#dcfaf3;color:#0f766e}
+.cand.busy .badge{background:#ffe6de;color:#c2410c}
+.why .more{margin-top:auto;padding-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.why .more span{font-size:13px;font-style:italic;background:var(--paper);border-radius:12px;padding:8px 11px}
+
 /* Regole */
 .rules{background:var(--ink);color:var(--on-ink)}
 .rules h2{color:#fff}
@@ -188,6 +218,7 @@ footer a{color:var(--on-ink);text-decoration:none}
     <div class="navlinks">
       <a href="#come-funziona">Come funziona</a>
       <a href="#proattivo">Cosa tiene d'occhio</a>
+      <a href="#assegna">Chi ci va</a>
       <a href="#integrazione">Con il tuo gestionale</a>
       <div class="dd">
         <button class="dd-btn" aria-expanded="false" aria-controls="dd-prodotti">Prodotti <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
@@ -227,7 +258,7 @@ footer a{color:var(--on-ink);text-decoration:none}
         <div><b>Il punto del mattino</b><small>martedì, 4 suggerimenti su 62 interventi aperti</small></div>
         <span class="count" id="sel-count">0 selezionati</span>
       </div>
-      <label class="sug"><input type="checkbox"><span><span class="k"><span class="r">Scadenza superata</span><em>#887 · Via dei Glicini 12</em></span><b>Perdita d'acqua in garage: urgente da 2 giorni, nessuna squadra</b><small>Assegna a <b style="display:inline;color:#fff;font-size:12.5px">Squadra Rossi</b>: idraulica, 14 interventi e 13 conclusi; già 5 volte in questo condominio; 6 aperti.</small></span></label>
+      <label class="sug"><input type="checkbox"><span><span class="k"><span class="r">Scadenza superata</span><em>#887 · Via dei Glicini 12</em></span><b>Perdita d'acqua in garage: urgente da 2 giorni, nessuna squadra</b><small>Lo passo a <b style="display:inline;color:#fff;font-size:12.5px">Marco Esposito</b>, idraulico? 17 lavori idraulici chiusi su 18; già 4 volte in questo condominio; 3 aperti.</small></span></label>
       <label class="sug"><input type="checkbox"><span><span class="k"><span class="o">Priorità</span><em>#891 · Via Manzoni 4</em></span><b>Da ordinario a media: «luci spente in scala B»</b><small>Più lampade spente nella stessa scala, non una lampadina sola.</small></span></label>
       <label class="sug"><input type="checkbox"><span><span class="k"><span class="y">Da controllare</span><em>#874 · Corso Italia 30</em></span><b>Appuntamento passato ieri, situazione non aggiornata</b><small>Chiedere alla squadra se il lavoro è stato fatto.</small></span></label>
       <label class="sug"><input type="checkbox"><span><span class="k"><span class="v">Possibile doppione</span><em>#893 e #889</em></span><b>Stesso cancello, stesso condominio, due interventi aperti</b><small>Unire le due segnalazioni e avvisare chi ha scritto.</small></span></label>
@@ -274,7 +305,7 @@ footer a{color:var(--on-ink);text-decoration:none}
         <div class="row"><small>Descrizione</small><b>Perdita attiva dal tubo in cantina, acqua a terra</b></div>
         <div class="row"><small>Categoria</small><b>Idraulica</b></div>
         <div class="row"><small>Priorità</small><b class="prio">Urgente</b></div>
-        <div class="row"><small>Squadra suggerita</small><b>Squadra Rossi</b></div>
+        <div class="row"><small>Da assegnare a</small><b>Marco Esposito, idraulico</b></div>
       </div>
     </div>
   </div>
@@ -311,6 +342,34 @@ footer a{color:var(--on-ink);text-decoration:none}
         <h3>Quello che non torna</h3>
         <p>Appuntamenti passati senza aggiornamento, lavori da ritornare senza una nuova data, segnalazioni doppie, descrizioni troppo vaghe per mandare qualcuno.</p>
         <div class="eg"><b>Esempio</b>«Da ritornare da 9 giorni, nessun nuovo appuntamento.»</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="assegna" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Chi ci va</span>
+      <h2>«Lo passo all'idraulico?»</h2>
+      <p>Una segnalazione senza nessuno che la prende in mano resta lì. Per ogni intervento senza assegnatario l'assistente ti propone chi mandare, un tecnico o una squadra intera, e ti dice perché proprio lui. Con un sì, gli scrive tutto quello che serve e segue il lavoro fino in fondo.</p>
+    </div>
+    <div class="assign">
+      <div class="handoff reveal" id="handoff" aria-live="polite">
+        <div class="hh"><span><i></i>Assistente H24 · a te</span><span>08:14</span></div>
+        <button type="button" class="again" id="ho-again">↻ Rivedi</button>
+      </div>
+      <div class="why reveal">
+        <h3>Perché Marco</h3>
+        <p>I candidati per un guasto idraulico in Via dei Glicini 12, dallo storico degli interventi.</p>
+        <div class="cand top"><span class="av">🔧</span><span><b>Marco Esposito · idraulico</b><small>17 lavori idraulici chiusi su 18 · già 4 volte in questo condominio · 3 lavori aperti</small></span><span class="badge">Consigliato</span></div>
+        <div class="cand"><span class="av">👷</span><span><b>Squadra Rossi · 2 idraulici</b><small>31 lavori idraulici chiusi · mai stati qui · 7 lavori aperti</small></span><span class="badge">Alternativa</span></div>
+        <div class="cand busy"><span class="av">🧰</span><span><b>Luca Ferri · manutentore</b><small>2 lavori idraulici · 11 lavori aperti</small></span><span class="badge">Troppo carico</span></div>
+        <div class="more">
+          <span>«Chiamo l'elettricista per le luci della scala B?»</span>
+          <span>«Mando il fabbro al cancello di Corso Italia?»</span>
+          <span>«Scrivo alla ditta delle pulizie per l'androne?»</span>
+        </div>
       </div>
     </div>
   </div>
@@ -469,6 +528,34 @@ footer a{color:var(--on-ink);text-decoration:none}
     count.textContent = left ? `${4 - left} applicati` : 'Tutto fatto ✓';
     apply.disabled = true;
   });
+
+  // Chi ci va: proposta di assegnazione (solo dimostrativo)
+  const ho = document.getElementById('handoff');
+  const again = document.getElementById('ho-again');
+  const sleep = ms => new Promise(r => setTimeout(r, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : ms));
+  const bub = (html, me) => { const d = document.createElement('div'); d.className = 'bub' + (me ? ' me' : ''); d.innerHTML = html; ho.insertBefore(d, again); return d; };
+  const replies = {
+    marco: ['Sì, assegna a Marco', ['Fatto ✅ Intervento assegnato a <b>Marco Esposito</b>.\nGli ho scritto su WhatsApp: indirizzo, foto della perdita e numero del portiere.', 'Marco ha confermato: <b>domani alle 9</b> 👍\nTi avviso quando chiude il lavoro, e lo dico anche a chi ha segnalato.']],
+    squadra: ['Mandaci la squadra', ['Fatto ✅ Assegnato alla <b>Squadra Rossi</b> (2 idraulici).\nHanno già scritto: possono passare <b>oggi alle 15</b>.', 'Lo segno sull\'intervento e avviso il portiere di aprire la cantina 🔑']],
+    io: ['Ci penso io', ['Va bene, resta a te.\nÈ urgente: se alle 12 non c\'è ancora nessuno assegnato, te lo ricordo ⏰']],
+  };
+  function start() {
+    ho.querySelectorAll('.bub,.choices').forEach(n => n.remove());
+    again.classList.remove('show');
+    bub('Il tubo in cantina di <b>Via dei Glicini 12</b> perde da stamattina: è <b>urgente</b> 🔧\nLo assegno a <b>Marco Esposito</b>, l\'idraulico? Ha già sistemato la colonna lì a ottobre ed è libero domani alle 9.');
+    const c = document.createElement('div'); c.className = 'choices';
+    c.innerHTML = '<button type="button" class="yes" data-k="marco">Sì, assegna a Marco</button><button type="button" data-k="squadra">Mandaci la squadra</button><button type="button" data-k="io">Ci penso io</button>';
+    ho.insertBefore(c, again);
+    c.querySelectorAll('button').forEach(b => b.onclick = async () => {
+      const [label, out] = replies[b.dataset.k];
+      c.remove();
+      bub(label, true);
+      for (const t of out) { await sleep(900); bub(t); }
+      again.classList.add('show');
+    });
+  }
+  again.onclick = start;
+  start();
 })();
 </script>
 </body>
