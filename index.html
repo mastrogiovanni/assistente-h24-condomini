@@ -457,10 +457,7 @@ footer a{color:var(--on-ink);text-decoration:none}
     </div>
 
     <div class="form-card reveal">
-      <form name="contatti-assistente-h24" method="POST" action="grazie/" data-netlify="true" netlify-honeypot="sito-web">
-        <input type="hidden" name="form-name" value="contatti-assistente-h24">
-        <input type="hidden" name="pagina" value="Assistente H24 (principale)">
-        <p class="hp"><label>Non compilare: <input name="sito-web" tabindex="-1" autocomplete="off"></label></p>
+      <form data-mail="Assistente H24 - Richiesta informazioni">
         <div class="fgrid">
           <div><label class="fl" for="m-nome">Nome e cognome</label><input id="m-nome" type="text" name="nome" autocomplete="name" required></div>
           <div><label class="fl" for="m-email">E-mail</label><input id="m-email" type="email" name="email" autocomplete="email" required></div>
@@ -496,12 +493,12 @@ footer a{color:var(--on-ink);text-decoration:none}
           <small>Rispondiamo di persona, di solito entro due giorni lavorativi.</small>
           <button type="submit">Invia la richiesta</button>
         </div>
-        <p class="form-err" role="alert">Non siamo riusciti a inviare il messaggio. Riprova tra qualche minuto.</p>
       </form>
       <div class="form-ok" role="status">
-        <div class="ok-ic">✅</div>
-        <h3>Ricevuto, grazie.</h3>
-        <p>Leggiamo con calma e ti scriviamo con una prima idea concreta.</p>
+        <div class="ok-ic">✉️</div>
+        <h3>Manca un ultimo passo.</h3>
+        <p>Si è aperto il tuo programma di posta con il messaggio già scritto: premi <b>Invia</b> per farci arrivare la richiesta.</p>
+        <p class="ok-alt">Non si è aperto nulla? Scrivici a <a data-mail-address></a> · <button type="button" class="form-back">Torna al modulo</button></p>
       </div>
     </div>
   </div>

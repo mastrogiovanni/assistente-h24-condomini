@@ -43,17 +43,20 @@ a.dd-item:hover{background:rgba(255,255,255,.06)}
 .checks input:focus-visible+span{box-shadow:0 0 0 4px rgba(255,181,71,.35)}
 .consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#5d6578;line-height:1.45}
 .consent input{margin-top:3px;width:16px;height:16px;accent-color:#0d1321;flex:none}
-.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
 .form-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px}
 .form-foot small{color:#5d6578;font-size:12.5px}
 .form-card button[type=submit]{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;border-radius:999px;font:600 15px Inter,sans-serif;padding:14px 24px;background:#ffb547;color:#0d1321;box-shadow:0 8px 30px -8px rgba(255,181,71,.6);transition:transform .15s}
 .form-card button[type=submit]:hover{transform:translateY(-1px)}
 .form-card button[disabled]{opacity:.6;cursor:wait}
-.form-err{display:none;margin-top:14px;color:#c2410c;font-size:14px}
-.form-err.show{display:block}
 .form-ok{display:none;text-align:center;padding:30px 10px}
 .form-ok .ok-ic{width:58px;height:58px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;background:#dcfaf3;font-size:26px}
 .form-ok h3{font:700 28px Fraunces,Georgia,serif;margin-bottom:8px;color:#1b2233}
 .form-ok p{color:#5d6578}
+.form-ok .ok-alt{margin-top:14px;font-size:14px}
+.form-ok .ok-alt a{color:#1b2233;font-weight:600}
+.form-back{background:none;border:0;padding:0;font:inherit;color:#1b2233;font-weight:600;text-decoration:underline;cursor:pointer}
 .form-card.sent form{display:none}
 .form-card.sent .form-ok{display:block}
+
+/* Badge "Powered by Netlify" (iframe aggiunto da Netlify): nascosto. Vedi anche assets/site.js. */
+#nl-badge-frame{display:none!important}

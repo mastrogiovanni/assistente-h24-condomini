@@ -313,10 +313,7 @@ footer a{color:var(--on-ink);text-decoration:none}
       <p>Lasciaci due dati: ti avvisiamo quando i connettori sono disponibili e, se vuoi, ti facciamo provare la versione anticipata.</p>
     </div>
     <div class="form-card reveal">
-      <form name="contatti-mcp" method="POST" action="../grazie/" data-netlify="true" netlify-honeypot="sito-web">
-        <input type="hidden" name="form-name" value="contatti-mcp">
-        <input type="hidden" name="pagina" value="Connettori MCP">
-        <p class="hp"><label>Non compilare: <input name="sito-web" tabindex="-1" autocomplete="off"></label></p>
+      <form data-mail="Connettori MCP - Lista d'attesa">
         <div class="fgrid">
           <div><label class="fl" for="p-nome">Nome e cognome</label><input id="p-nome" type="text" name="nome" autocomplete="name" required></div>
           <div><label class="fl" for="p-email">E-mail</label><input id="p-email" type="email" name="email" autocomplete="email" required></div>
@@ -353,12 +350,12 @@ footer a{color:var(--on-ink);text-decoration:none}
           <small>Niente newsletter: ti scriviamo solo per questo.</small>
           <button type="submit">Avvisami →</button>
         </div>
-        <p class="form-err" role="alert">Non siamo riusciti a inviare la richiesta. Riprova tra qualche minuto.</p>
       </form>
       <div class="form-ok" role="status">
-        <div class="ok-ic">✅</div>
-        <h3>Sei in lista.</h3>
-        <p>Ti scriviamo appena i connettori sono pronti da provare.</p>
+        <div class="ok-ic">✉️</div>
+        <h3>Manca un ultimo passo.</h3>
+        <p>Si è aperto il tuo programma di posta con il messaggio già scritto: premi <b>Invia</b> per farci arrivare la richiesta.</p>
+        <p class="ok-alt">Non si è aperto nulla? Scrivici a <a data-mail-address></a> · <button type="button" class="form-back">Torna al modulo</button></p>
       </div>
     </div>
   </div>

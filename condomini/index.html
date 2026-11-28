@@ -609,10 +609,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     <h2 style="margin-top:16px">Dai ai tuoi condòmini un assistente <em>che c'è H24.</em></h2>
     <p>Ti mostriamo l'Assistente H24 sui documenti del tuo condominio, su WhatsApp, in venti minuti.</p>
     <div class="form-card" style="margin-top:8px">
-      <form name="contatti-condomini" method="POST" action="../grazie/" data-netlify="true" netlify-honeypot="sito-web">
-        <input type="hidden" name="form-name" value="contatti-condomini">
-        <input type="hidden" name="pagina" value="Assistente H24 – Condomini">
-        <p class="hp"><label>Non compilare: <input name="sito-web" tabindex="-1" autocomplete="off"></label></p>
+      <form data-mail="Assistente H24 – Condomini - Richiesta demo">
         <div class="fgrid">
           <div><label class="fl" for="c-nome">Nome e cognome</label><input id="c-nome" type="text" name="nome" autocomplete="name" required></div>
           <div><label class="fl" for="c-studio">Studio <i>(facoltativo)</i></label><input id="c-studio" type="text" name="studio" autocomplete="organization"></div>
@@ -646,12 +643,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           <small>Ti ricontattiamo per fissare la demo, in videochiamata.</small>
           <button type="submit">Richiedi la demo →</button>
         </div>
-        <p class="form-err" role="alert">Non siamo riusciti a inviare la richiesta. Riprova tra qualche minuto.</p>
       </form>
       <div class="form-ok" role="status">
-        <div class="ok-ic">✅</div>
-        <h3>Richiesta ricevuta.</h3>
-        <p>Ti scriviamo a breve per fissare la demo sui documenti del tuo condominio.</p>
+        <div class="ok-ic">✉️</div>
+        <h3>Manca un ultimo passo.</h3>
+        <p>Si è aperto il tuo programma di posta con il messaggio già scritto: premi <b>Invia</b> per farci arrivare la richiesta.</p>
+        <p class="ok-alt">Non si è aperto nulla? Scrivici a <a data-mail-address></a> · <button type="button" class="form-back">Torna al modulo</button></p>
       </div>
     </div>
   </div>

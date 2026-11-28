@@ -11,11 +11,10 @@ Nomi, indirizzi e dati negli esempi sono di fantasia.
 | `condomini/index.html` | Pagina prodotto a sé stante: Assistente H24 – Condomini, con demo interattiva |
 | `segnalazioni/index.html` | Pagina prodotto di Assistente H24 – Segnalazioni (in arrivo): segnalazioni, interventi e squadre, accendibile e spegnibile |
 | `mcp/index.html` | Pagina prodotto dei Connettori MCP (in arrivo) per CedHouse Suite e Gestendo, accendibile e spegnibile |
-| `grazie/index.html` | Pagina di conferma dopo l'invio di un form (usata se JavaScript è disattivato) |
 | `404.html` | Pagina "non trovata" servita da Netlify |
 | `assets/config.js` | **Interruttori del sito**: mostra o nasconde sezioni intere (es. i connettori MCP) |
 | `assets/shared.css` | Stili condivisi: menu "Prodotti" e form di contatto |
-| `assets/site.js` | Script condiviso: apertura del menu e invio dei form a Netlify |
+| `assets/site.js` | Script condiviso: apertura del menu e form di contatto via e-mail (qui c'è l'indirizzo che riceve le richieste) |
 | `netlify.toml` | Configurazione di deploy, redirect www → dominio principale, header |
 | `robots.txt`, `sitemap.xml` | Indicizzazione |
 
@@ -61,23 +60,30 @@ Il menu "Prodotti" è scritto in ciascuna pagina (cerca `class="dd-panel"`). Per
 Quando il prodotto è disponibile, trasforma il `div` in `<a class="dd-item" href="nome-prodotto/">` e cambia l'etichetta in `Disponibile`.
 Aggiorna anche la sezione `#prodotti` di `index.html` e `sitemap.xml`.
 
-## Form di contatto (Netlify Forms)
+## Form di contatto (via e-mail)
 
-Ci sono quattro form:
+Il sito è statico e non ha un backend, come elpa-site. Ogni form, quando lo invii, **prepara un'e-mail**
+con l'oggetto del form e i campi compilati, e apre il programma di posta del visitatore. La richiesta
+arriva quando il visitatore preme **Invia** nella sua posta.
 
-- `contatti-assistente-h24` in `index.html`
-- `contatti-condomini` in `condomini/index.html`
-- `contatti-segnalazioni` in `segnalazioni/index.html`
-- `contatti-mcp` in `mcp/index.html` (lista d'attesa dei connettori)
+Ci sono quattro form, ciascuno con il suo oggetto (attributo `data-mail`):
 
-Netlify li riconosce al deploy grazie all'attributo `data-netlify="true"`. Le risposte arrivano in
-**Netlify → il sito → Forms**, separate per nome del form.
+| Pagina | Oggetto dell'e-mail |
+|---|---|
+| `index.html` | Assistente H24 - Richiesta informazioni |
+| `condomini/index.html` | Assistente H24 – Condomini - Richiesta demo |
+| `segnalazioni/index.html` | Assistente H24 – Segnalazioni - Richiesta demo |
+| `mcp/index.html` | Connettori MCP - Lista d'attesa |
 
-### Prima attivazione
+### Indirizzo che riceve le richieste
 
-1. Netlify → *Site configuration → Forms* → **Enable form detection**.
-2. Fai un nuovo deploy: i form compariranno nell'elenco.
-3. *Forms → Form notifications* → **Add notification → Email notification**: scegli il form e l'indirizzo che deve ricevere le richieste. Puoi aggiungere anche notifiche Slack o webhook.
+Si trova in cima ad `assets/site.js`:
+
+```js
+const SITE_EMAIL = 'info@elpaproject.com';
+```
+
+Cambialo lì: vale per tutti i form e per il link "Scrivici a…" nel messaggio di conferma.
 
 ### Modificare i campi
 
@@ -88,38 +94,36 @@ Ogni campo è un normale elemento HTML dentro il `<form>`:
   <input id="m-azienda" type="text" name="azienda"></div>
 ```
 
-- `name` è il nome con cui il dato appare in Netlify: cambiarlo crea una nuova colonna.
+- Nell'e-mail ogni campo compilato diventa una riga `Etichetta: valore`. L'etichetta è il testo del `<label for="...">`, senza la parte in `<i>`. Quindi servono un `id` sul campo e un `for` uguale sul label.
 - `required` rende il campo obbligatorio.
 - `<div class="full">` occupa tutta la larghezza, senza `full` il campo sta a metà riga.
 - Menu a tendina: `<select name="...">` con le `<option>` che vuoi.
-- Scelte multiple a "pillola": copia una riga dentro `<div class="checks">`, mantenendo `name="strumenti[]"` (le parentesi servono a ricevere più valori).
-- Il campo nascosto `pagina` dice da quale pagina arriva la richiesta.
-
-Dopo ogni modifica serve un nuovo deploy perché Netlify aggiorni la struttura del form.
+- Scelte multiple a "pillola": copia una riga dentro `<div class="checks">` e mantieni lo stesso `name`. Nell'e-mail i valori scelti finiscono su una sola riga, dopo il titolo del gruppo (`<span class="fl">`).
+- La casella del consenso (`name="consenso"`) è obbligatoria, ma non viene scritta nell'e-mail.
+- Per cambiare l'oggetto, modifica `data-mail` sul `<form>`.
 
 ### Testi, conferma e aspetto
 
-- **Messaggio di conferma:** è il blocco `<div class="form-ok">` subito dopo il form, e compare al posto del form senza ricaricare la pagina.
-- **Pagina di conferma senza JavaScript:** si trova in `grazie/index.html`. Per usarne un'altra cambia l'attributo `action` del form.
-- **Messaggio d'errore:** è in `<p class="form-err">`.
+- **Messaggio di conferma:** è il blocco `<div class="form-ok">` subito dopo il form. Compare al posto del form e ricorda al visitatore di premere Invia. Se il programma di posta non si apre, il blocco mostra l'indirizzo e un pulsante per tornare al modulo.
 - **Colori e forme:** sono in `assets/shared.css`, nella sezione "Form di contatto".
 
-### Antispam
+### Limiti
 
-- **Honeypot:** è attivo con il campo nascosto `sito-web` (attributo `netlify-honeypot`). Netlify filtra anche lo spam con Akismet.
-- **reCAPTCHA (se serve):** aggiungi `data-netlify-recaptcha="true"` al `<form>` e `<div data-netlify-recaptcha="true"></div>` prima del pulsante di invio.
+- Serve un programma di posta configurato sul dispositivo del visitatore (Gmail, Outlook, Mail…). Senza, resta solo l'indirizzo da copiare.
+- Senza JavaScript il form non invia nulla.
+- Non c'è un elenco delle richieste ricevute: arrivano nella casella dell'indirizzo indicato.
 
 ### Privacy
 
 La casella di consenso è obbligatoria. Prima di andare online, aggiungi una pagina di informativa privacy (GDPR) e collegala nel testo del consenso.
 
-### Usare un altro servizio al posto di Netlify Forms
+## Badge "Powered by Netlify"
 
-Per Formspree, Getform o un tuo backend:
-
-1. Cambia l'attributo `action` del form con l'URL del servizio.
-2. Togli `data-netlify="true"` e `netlify-honeypot`.
-3. In `assets/site.js` sostituisci `fetch('/', ...)` con l'URL del servizio, oppure togli lo script e lascia l'invio classico.
+Sul piano gratuito Netlify aggiunge in fondo a ogni pagina un `<iframe id="nl-badge-frame">` con il badge
+"Powered by Netlify". Il sito lo nasconde in due modi: una regola in `assets/shared.css` e un controllo in
+`assets/site.js` che lo nasconde anche quando compare dopo il caricamento. Sul piano gratuito Netlify non
+consente di nascondere il badge dalle impostazioni: verifica che questa soluzione rispetti i loro termini di
+servizio, oppure passa a un piano a pagamento. Se Netlify cambia l'`id` dell'iframe, va aggiornato in entrambi i file.
 
 ## Deploy su Netlify
 

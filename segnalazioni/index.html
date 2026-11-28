@@ -444,10 +444,7 @@ footer a{color:var(--on-ink);text-decoration:none}
       <p>Se la risposta è «non lo so di preciso», è il caso di sentirci. Ti mostriamo l'assistente sui tuoi interventi veri.</p>
     </div>
     <div class="form-card reveal">
-      <form name="contatti-segnalazioni" method="POST" action="../grazie/" data-netlify="true" netlify-honeypot="sito-web">
-        <input type="hidden" name="form-name" value="contatti-segnalazioni">
-        <input type="hidden" name="pagina" value="Assistente H24 – Segnalazioni">
-        <p class="hp"><label>Non compilare: <input name="sito-web" tabindex="-1" autocomplete="off"></label></p>
+      <form data-mail="Assistente H24 – Segnalazioni - Richiesta demo">
         <div class="fgrid">
           <div><label class="fl" for="s-nome">Nome e cognome</label><input id="s-nome" type="text" name="nome" autocomplete="name" required></div>
           <div><label class="fl" for="s-email">E-mail</label><input id="s-email" type="email" name="email" autocomplete="email" required></div>
@@ -486,12 +483,12 @@ footer a{color:var(--on-ink);text-decoration:none}
           <small>Ti ricontattiamo per fissare la demo, in videochiamata.</small>
           <button type="submit">Richiedi la demo →</button>
         </div>
-        <p class="form-err" role="alert">Non siamo riusciti a inviare la richiesta. Riprova tra qualche minuto.</p>
       </form>
       <div class="form-ok" role="status">
-        <div class="ok-ic">✅</div>
-        <h3>Richiesta ricevuta.</h3>
-        <p>Ti scriviamo a breve per fissare la demo sui tuoi interventi.</p>
+        <div class="ok-ic">✉️</div>
+        <h3>Manca un ultimo passo.</h3>
+        <p>Si è aperto il tuo programma di posta con il messaggio già scritto: premi <b>Invia</b> per farci arrivare la richiesta.</p>
+        <p class="ok-alt">Non si è aperto nulla? Scrivici a <a data-mail-address></a> · <button type="button" class="form-back">Torna al modulo</button></p>
       </div>
     </div>
   </div>
